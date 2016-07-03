@@ -33,4 +33,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Score');
     }
+
+    public function isTeacher()
+    {
+        if ($this->role === 'teacher')
+            return true;
+    }
 }

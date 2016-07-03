@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->string('url_thumbnail');
             $table->timestamp('date');
-            $table->string('status');
+            $table->boolean('status')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
             $table->timestamps();
         });

@@ -14,7 +14,7 @@
     <ul>
         <li><a href="{{ action('FrontController@index') }}">Home</a></li>
         <li><a href="{{action('FrontController@posts') }}">Actus</a></li>
-        <li><a href="">Lycée</a></li>
+        <li><a href="{{ action('FrontController@school') }}">Lycée</a></li>
         <li>
             <form action="" method="get">
                 <input type="text" placeholder="Rechercher" name="q">

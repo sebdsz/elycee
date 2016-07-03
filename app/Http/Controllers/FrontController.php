@@ -28,6 +28,11 @@ class FrontController extends Controller
         return view('front.post', compact('post'));
     }
 
+    public function school()
+    {
+        return view('front.school');
+    }
+
     public function legal()
     {
         return view('front.legal');

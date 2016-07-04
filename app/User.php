@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password', 'role',
     ];
 
     /**
@@ -40,6 +40,21 @@ class User extends Authenticatable
             return true;
 
         return false;
+    }
+
+    public function inClass()
+    {
+        switch ($this->role) {
+            case 'first_class' :
+                return 'Première S';
+                break;
+            case 'final_class' :
+                return 'Terminale S';
+                break;
+            default :
+                return 'Erreur';
+                break;
+        }
     }
 
     public function scopeStudent($query)

@@ -2,7 +2,11 @@
 
 @section('content')
 
-    <h2>Page etudiant Dashboard</h2>
+    <h2>Dashboard</h2>
+
+    @if($newQCM)
+        <p>Vous avez {{ $newQCM }} {{ trans_choice('site.newQCM', $newQCM) }} à valider.</p>
+    @endif
 
     <h3>Statistiques</h3>
     <div class="score">

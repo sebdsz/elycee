@@ -7,5 +7,6 @@ return [
     'students' => 'élève|élèves',
     'points' => 'point|points',
     'qcm_finish' => 'QCM réalisé|QCM réalisés',
+    'newQCM' => 'nouveau QCM|nouveaux QCM',
 
 ];

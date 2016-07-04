@@ -26,6 +26,7 @@ class QCMController extends Controller
         }
 
         $choices = Choice::where('question_id', $choice)->get();
+        $newQCM = Question::where('id', '!=', $choice)->get()->count();
         $maxScore = count($choices);
 
         if ($scores) {
@@ -35,7 +36,8 @@ class QCMController extends Controller
             }
         }
 
-        return view('back.questions.dashboard', compact('total', 'maxScore', 'totalQCM'));
+
+        return view('back.questions.dashboard', compact('total', 'maxScore', 'totalQCM', 'newQCM'));
     }
 
     public function index()

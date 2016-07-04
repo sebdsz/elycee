@@ -17,17 +17,21 @@ class QCMController extends Controller
         $student = Auth::user();
 
         $scores = $student->scores;
+        $newQCM = 0;
         $total = 0;
         $totalQCM = 0;
+        $maxScore = 0;
         $choice = [];
 
         foreach ($scores as $score) {
             $choice = $score->question_id;
         }
+        if ($choice) {
+            $choices = Choice::where('question_id', $choice)->get();
+            $newQCM = Question::where('id', '!=', $choice)->get()->count();
+            $maxScore = count($choices);
 
-        $choices = Choice::where('question_id', $choice)->get();
-        $newQCM = Question::where('id', '!=', $choice)->get()->count();
-        $maxScore = count($choices);
+        }
 
         if ($scores) {
             foreach ($scores as $score) {

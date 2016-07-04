@@ -3,22 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Http\Requests;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 
 class FrontController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::with('comments', 'user')->get();
 
         return view('front.home', compact('posts'));
     }
 
     public function posts()
     {
-        $posts = Post::all();
+        $posts = Post::with('comments', 'user')->get();
 
         return view('front.posts', compact('posts'));
     }

@@ -43,8 +43,7 @@ class PostController extends Controller
         $post = Post::create($request->all());
         $post->user_id = Auth::user()->id;
         $post->touch();
-
-        //$this->upload($request, $post);
+        $this->upload($request, $post);
 
         return redirect()->action('PostController@edit', $post)->with('message', 'Article crée avec succès !');
     }
@@ -84,7 +83,8 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->update($request->all());
-        //$this->upload($request, $post);
+        $this->upload($request, $post);
+
         //$this->deletePicture($request, $post);
 
         return back()->with('message', 'Article modifié avec succès !');
@@ -101,6 +101,18 @@ class PostController extends Controller
         $post->delete();
 
         return back()->with('message', 'Article supprimé avec succès !');
+    }
+
+    private function upload(Requests\PostRequest $request, Post $post)
+    {
+        if (!empty($request->file('url_thumbnail'))) {
+            $img = $request->file('url_thumbnail');
+            $ext = $img->getClientOriginalExtension();
+            $uri = str_random(50) . '.' . $ext;
+            $img->move(env('UPLOAD_PICTURES', 'uploads') . DIRECTORY_SEPARATOR . $post->id, $uri);
+            $post->url_thumbnail = $uri;
+            $post->touch();
+        }
     }
 
     public function multiple(Request $request)

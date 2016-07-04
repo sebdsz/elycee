@@ -15,10 +15,14 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->unsignedInteger('post_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->string('title');
             $table->text('content');
             $table->timestamp('date');
             $table->string('status');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('SET NULL');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
             $table->timestamps();
         });
     }

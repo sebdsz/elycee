@@ -12,6 +12,15 @@
         {{ method_field('PUT') }}
         {{ csrf_field() }}
 
+        <div class="form-group">
+            @if($post->url_thumbnail)
+                <img src="{{ $post->url_thumbnail() }}" class="img-responsive">
+            @endif
+            <label for="thumbnail">Thumbnail</label>
+            <input type="file" class="form-control" name="url_thumbnail">
+
+        </div>
+
         <label for="title">Titre</label>
         <input id="title" type="text" value="{{ $post->title }}" name="title" placeholder="Le titre de votre article">
         @if($errors->has('title')) <span class="error">{{ $errors->first('title') }}</span> @endif

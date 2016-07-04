@@ -12,6 +12,11 @@
         {{ csrf_field() }}
 
         <div class="form-group">
+            <label for="thumbnail">Thumbnail</label>
+            <input type="file" class="form-control" name="url_thumbnail">
+        </div>
+
+        <div class="form-group">
             <label for="title">Titre</label>
             <input id="title" class="form-control" type="text" value="{{ old('title') }}" name="title" placeholder="Le titre de votre article">
             @if($errors->has('title')) <span class="error">{{ $errors->first('title') }}</span> @endif

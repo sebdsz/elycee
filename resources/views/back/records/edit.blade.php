@@ -15,8 +15,8 @@
         <div class="form-group">
             <label for="class_level">Niveau</label>
             <select name="class_level" id="class_level" class="form-control" required>
-                <option value="premiere">Première S</option>
-                <option value="terminale">Terminale S</option>
+                <option value="first_class" @if($record->class_level === 'first_class') selected @endif>Première S</option>
+                <option value="final_class" @if($record->class_level === 'final_class') selected @endif>Terminale S</option>
             </select>
             @if($errors->has('class_level')) <span class="error">{{ $errors->first('class_level') }}</span> @endif
         </div>

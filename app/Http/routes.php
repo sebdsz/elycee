@@ -13,6 +13,7 @@
 Route::pattern('id', '[0-9]+');
 
 Route::auth();
+
 Route::get('', 'FrontController@index');
 Route::get('actualites', 'FrontController@posts');
 Route::get('actualite/{post}', 'FrontController@post');
@@ -33,7 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.teacher'], function () 
 });
 
 
-Route::group(['prefix' => 'etudiant', 'middelware' => 'auth'], function () {
+Route::group(['prefix' => 'etudiant', 'middleware' => 'auth'], function () {
     Route::get('', 'QCMController@dashboard');
     Route::get('liste', 'QCMController@index');
     Route::get('fiche/{id}', 'QCMController@question');
@@ -41,5 +42,6 @@ Route::group(['prefix' => 'etudiant', 'middelware' => 'auth'], function () {
     Route::post('fiche/{id}/check', 'QCMController@check');
     Route::delete('comment/delete/{id}', 'CommentController@delete');
 });
+
 
 

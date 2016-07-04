@@ -3,6 +3,7 @@
 @section('content')
 
     <h2> {{ $question->title }}</h2>
+    <h3> {{ $question->content }}</h3>
 
     <form action="{{ action('QCMController@check', $question) }}" method="post">
         {{ csrf_field() }}

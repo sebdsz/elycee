@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 class QCMController extends Controller
 {
+
     public function dashboard()
     {
         $student = Auth::user();
@@ -46,7 +47,8 @@ class QCMController extends Controller
 
     public function index()
     {
-        $questions = Question::publish()->get();
+        $class = Auth::user()->role;
+        $questions = Question::publish()->where('class_level', $class)->get();
 
         return view('back.questions.index', compact('questions'));
     }
@@ -69,6 +71,8 @@ class QCMController extends Controller
                 else
                     $note--;
             }
+
+            $note = $note > 0 ? $note : 0;
 
             Score::create([
                 'user_id' => Auth::user()->id,

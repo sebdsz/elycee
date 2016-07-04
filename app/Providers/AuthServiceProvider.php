@@ -14,6 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         \App\Question::class => \App\Policies\QCMPolicy::class,
+        \App\Post::class => \App\Policies\PostPolicy::class,
     ];
 
     /**

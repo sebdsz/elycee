@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.teacher'], function () 
 Route::group(['prefix' => 'etudiant', 'middelware' => 'auth'], function () {
     Route::get('/', 'QCMController@dashboard');
     Route::get('/qcm', 'QCMController@index');
+    Route::post('comment', 'CommentController@store');
 });
 
 

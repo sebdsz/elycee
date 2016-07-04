@@ -8,7 +8,7 @@
             <h3>Articles</h3>
             @foreach($posts as $post)
                 <div class="post">
-                    <img src="{{ $post->url_thumbnail() }}" alt="">
+                    @if($post->url_thumbnail) <img src="{{ $post->url_thumbnail() }}" alt=""> @endif
                     <h4>{{ $post->title }}</h4>
                     <p>{{ $post->abstract }}</p>
                     <p>{{ $post->excerpt() }}</p>
@@ -25,6 +25,17 @@
                                     Par {{ $comment->user->username }}, il y a {{ $comment->ago() }}.</p>
                             </div>
                         @endforeach
+                        @can('comment', $post)
+                        <form action="{{ action('CommentController@store') }}" method="post">
+                            {{ csrf_field() }}
+                            <label for="content">Votre commentaire</label>
+                            <input type="hidden" value="{{ $post->id }}" name="post_id">
+                            <textarea name="content" id="content"></textarea>
+                            @if($errors->has('content')) <span
+                                    class="error">{{ $errors->first('content') }}</span> @endif
+                            <button>Commenter</button>
+                        </form>
+                        @endcan
                     </div>
                 </div>
             @endforeach

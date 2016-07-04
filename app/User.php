@@ -61,4 +61,9 @@ class User extends Authenticatable
     {
         return $query->where('role', '!=', 'teacher');
     }
+
+    public function scopeLast($query, $limit = 3)
+    {
+        return $query->orderBy('created_at', 'DESC')->take($limit);
+    }
 }

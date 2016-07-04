@@ -25,4 +25,9 @@ class Question extends Model
     {
         return $query->where('status', 1);
     }
+
+    public function scopeLast($query, $limit = 3)
+    {
+        return $query->orderBy('created_at', 'DESC')->take($limit);
+    }
 }

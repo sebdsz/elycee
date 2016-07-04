@@ -23,10 +23,12 @@ class BackController extends Controller
     public function index()
     {
         $posts = Post::last()->get();
+        $questions = Question::last()->get();
+        $students = User::student()->last()->get();
         $countComments = Comment::all()->count();
         $countRecords = Question::all()->count();
         $countStudents = User::Student()->get()->count();
 
-        return view('back.dashboard', compact('posts', 'countComments', 'countRecords', 'countStudents'));
+        return view('back.dashboard', compact('posts', 'questions', 'students', 'countComments', 'countRecords', 'countStudents'));
     }
 }

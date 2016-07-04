@@ -4,6 +4,12 @@
     <div class="row">
         <section class="col-xs-12 col-md-6">
             <h2>Gestion des fiches</h2>
+            <h3>Dernières fiches</h3>
+            @forelse($questions as $question)
+                <a href="{{ action('RecordController@edit', $question) }}">{{ $question->title }}</a>
+            @empty
+                Aucune question dans la base de données.
+            @endforelse
         </section>
 
         <section class="col-xs-12 col-md-6">
@@ -19,18 +25,26 @@
             <div>
                 <h3>Derniers articles</h3>
                 <div class="last-posts">
-                    @foreach($posts as $post)
+                    @forelse($posts as $post)
                         <div class="last-post">
                             <a href="{{ action('PostController@edit', $post) }}">{{ $post->title }}</a> {{ $post->status }}
                         </div>
-                    @endforeach
-                        <a href="{{ action('PostController@index') }}">Voir tous les articles</a>
+                    @empty
+                        Aucun article dans la base de données.
+                    @endforelse
+                    <a href="{{ action('PostController@index') }}">Voir tous les articles</a>
                 </div>
             </div>
         </section>
 
         <section class="col-xs-12 col-md-6">
             <h2>Gestion des élèves</h2>
+            <h3>Derniers élèves</h3>
+            @forelse($students as $student)
+                <a href="{{ action('StudentController@edit', $student) }}">{{ $student->username }}</a>
+            @empty
+                Aucun élève dans la base de données.
+            @endforelse
         </section>
     </div>
 @endsection

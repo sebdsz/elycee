@@ -53,7 +53,7 @@ class Post extends Model
         return Str::words($this->content, $words);
     }
 
-    public function scopeLast($query, $limit = 5)
+    public function scopeLast($query, $limit = 3)
     {
         return $query->orderBy('date', 'DESC')->take($limit);
     }

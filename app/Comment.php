@@ -27,4 +27,6 @@ class Comment extends Model
     {
         return Carbon::parse($this->date)->diffForHumans(Carbon::now(), true);
     }
+
+
 }

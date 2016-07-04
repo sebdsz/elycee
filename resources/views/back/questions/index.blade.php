@@ -10,7 +10,7 @@
             <div class="question">
                 @can('can', $question)
                 <span class="icon-undo"></span>
-                <a href="">{{ $question->title }}</a>
+                <a href="{{ action('QCMController@question', $question) }}">{{ $question->title }}</a>
                 @else
                     <span class="icon-do"></span>
                     {{ $question->title }}

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Question;
 use Auth;
+use App\Score;
+use App\Choice;
+use App\Question;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -17,7 +19,15 @@ class QCMController extends Controller
         $scores = $student->scores;
         $total = 0;
         $totalQCM = 0;
-        $maxScore = 1000;
+        $choice = [];
+
+        foreach ($scores as $score) {
+            $choice = $score->question_id;
+        }
+
+        $choices = Choice::where('question_id', $choice)->get();
+        $maxScore = count($choices);
+
         if ($scores) {
             foreach ($scores as $score) {
                 $total += $score->note;
@@ -25,13 +35,44 @@ class QCMController extends Controller
             }
         }
 
-        return view('back.qcm.dashboard', compact('total', 'maxScore', 'totalQCM'));
+        return view('back.questions.dashboard', compact('total', 'maxScore', 'totalQCM'));
     }
 
     public function index()
     {
         $questions = Question::publish()->get();
 
-        return view('back.qcm.index', compact('questions'));
+        return view('back.questions.index', compact('questions'));
     }
+
+    public function question($id)
+    {
+        $question = Question::findOrFail($id);
+
+        return view('back.questions.question', compact('question'));
+    }
+
+    public function check(Request $request)
+    {
+        if ($request->get('id')) {
+            $note = 0;
+            foreach ($request->get('id') as $key => $id) {
+                $choice = Choice::findOrFail($request->get('id')[$key]);
+                if ($choice->status == $request->get('status')[$key])
+                    $note++;
+                else
+                    $note--;
+            }
+
+            Score::create([
+                'user_id' => Auth::user()->id,
+                'question_id' => $request->get('question_id'),
+                'note' => $note,
+            ]);
+
+            return redirect()->action('QCMController@index')->with('message', 'Vos réponses ont été envoyé aux enseignants, merci !');
+        }
+    }
+
+
 }

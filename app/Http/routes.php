@@ -12,7 +12,11 @@
 */
 Route::pattern('id', '[0-9]+');
 
-Route::auth();
+Route::get('login', 'Auth\AuthController@getLogin');
+Route::post('login', 'Auth\AuthController@postLogin');
+Route::get('logout', 'Auth\AuthController@logout');
+Route::get('password/reset', 'Auth\PasswordController@showLinkRequestForm');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
 
 Route::get('', 'FrontController@index');
 Route::get('actualites', 'FrontController@posts');

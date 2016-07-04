@@ -1,5 +1,5 @@
 @extends('layouts.back')
-
+@section('title', 'E-lycée - QCM')
 @section('content')
 
     <h2>QCM</h2>

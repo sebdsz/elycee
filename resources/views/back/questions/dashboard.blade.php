@@ -1,5 +1,5 @@
 @extends('layouts.back')
-
+@section('title', 'E-lycée - Dashboard étudiant')
 @section('content')
 
     <h2>Dashboard</h2>

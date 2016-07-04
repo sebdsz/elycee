@@ -1,5 +1,5 @@
 @extends('layouts.back')
-
+@section('title', 'E-lycée - QCM')
 @section('content')
 
     <h2> {{ $question->title }}</h2>
@@ -20,7 +20,7 @@
                 </div>
             </div>
         @endforeach
-        <button class="btn btn-primary">Valider</button>
+        <button class="btn btn-primary" title="Valider le QCM">Valider</button>
     </form>
 
 

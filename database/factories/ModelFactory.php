@@ -13,10 +13,10 @@
 
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
-        'title' => $faker->word,
+        'title' => $faker->sentence(3),
         'user_id' => 1,
         'content' => $faker->sentences(10, true),
-        'date' => $faker->dateTimeThisMonth,
+        'date' => $faker->dateTimeThisMonth->format('Y-m-d H:i:s'),
         'status' => rand(0,1),
     ];
 });

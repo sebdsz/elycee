@@ -17,7 +17,7 @@ class CreateChoicesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('question_id')->nullable();
             $table->text('content');
-            $table->enum('status', ['yes', 'no']);
+            $table->boolean('status')->default(0);
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('SET NULL');
             $table->timestamps();
         });

@@ -16,13 +16,13 @@ class AuthTeacher
      */
     public function handle($request, Closure $next)
     {
+        if (!Auth::check())
+            return redirect('login');
 
-        if (Auth::check()) {
-            if (Auth::user()->isTeacher())
-                return $next($request);
-            else
-                return action('FrontController@index');
-        }
+        if (Auth::user()->isTeacher())
+            return $next($request);
+
+        return redirect()->action('QCMController@dashboard');
 
     }
 }

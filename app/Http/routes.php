@@ -19,11 +19,20 @@ Route::get('lycee', 'FrontController@school');
 Route::get('mentions-legale', 'FrontController@legal');
 Route::get('contact', 'FrontController@contact');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auth.teacher']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth.teacher'], function () {
     Route::get('/', 'BackController@index');
-    Route::resource('fiches', 'QcmController');
+    Route::resource('fiches', 'RecordController');
+    Route::post('fiches/action', 'RecordController@multiple');
     Route::resource('articles', 'PostController');
+    Route::post('articles/action', 'PostController@multiple');
     Route::resource('eleves', 'StudentController');
+    Route::get('questions/{id}/edit', 'ChoiceController@edit');
+    Route::put('questions/{id}/edit', 'ChoiceController@update');
+});
+
+Route::group(['prefix' => 'etudiant', 'middelware' => 'auth'], function () {
+    Route::get('/', 'QCMController@dashboard');
+    Route::get('/qcm', 'QCMController@index');
 });
 
 

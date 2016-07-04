@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Post;
+use App\Choice;
+use App\Question;
+use App\Http\Requests;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-
-class PostController extends Controller
+class RecordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $records = Question::all();
 
-        return view('back.posts.index', compact('posts'));
+        return view('back.records.index', compact('records'));
     }
 
     /**
@@ -29,7 +28,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('back.posts.create');
+        return view('back.records.create');
     }
 
     /**
@@ -38,15 +37,17 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\PostRequest $request)
+    public function store(Requests\RecordRequest $request)
     {
-        $post = Post::create($request->all());
-        $post->user_id = Auth::user()->id;
-        $post->touch();
+        $record = Question::create($request->all());
 
-        //$this->upload($request, $post);
+        for ($i = 0; $i < $request->get('number'); $i++) {
+            Choice::create([
+                'question_id' => $record->id,
+            ]);
+        }
 
-        return redirect()->action('PostController@edit', $post)->with('message', 'Article crée avec succès !');
+        return redirect()->action('ChoiceController@edit', $record)->with('message', 'Question créee avec succès !');
     }
 
     /**
@@ -68,9 +69,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
+        $record = Question::findOrFail($id);
 
-        return view('back.posts.edit', compact('post'));
+        return view('back.records.edit', compact('record'));
     }
 
     /**
@@ -80,14 +81,12 @@ class PostController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Requests\PostRequest $request, $id)
+    public function update(Requests\RecordRequest $request, $id)
     {
-        $post = Post::findOrFail($id);
-        $post->update($request->all());
-        //$this->upload($request, $post);
-        //$this->deletePicture($request, $post);
+        $record = Question::findOrFail($id);
+        $record->update($request->all());
 
-        return back()->with('message', 'Article modifié avec succès !');
+        return redirect()->action('ChoiceController@edit', $record)->with('message', 'Question modifiée avec succès !');
     }
 
     /**
@@ -96,11 +95,11 @@ class PostController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($post)
+    public function destroy($record)
     {
-        $post->delete();
+        $record->delete();
 
-        return back()->with('message', 'Article supprimé avec succès !');
+        return back()->with('message', 'Question supprimée avec succès !');
     }
 
     public function multiple(Request $request)
@@ -109,21 +108,21 @@ class PostController extends Controller
             switch ($request->get('action')) {
                 case 'publish' :
                     foreach ($request->get('checked') as $checked) {
-                        Post::findOrFail($checked)->update(['status' => 1]);
+                        Question::findOrFail($checked)->update(['status' => 1]);
                     }
-                    $message = 'Les articles séléctionnés ont été publié.';
+                    $message = 'Les questions séléctionnées ont été publié.';
                     break;
                 case 'unpublish' :
                     foreach ($request->get('checked') as $checked) {
-                        Post::findOrFail($checked)->update(['status' => 0]);
+                        Question::findOrFail($checked)->update(['status' => 0]);
                     }
-                    $message = 'Les articles séléctionnés ont été dépublié.';
+                    $message = 'Les questions séléctionnées ont été dépublié.';
                     break;
                 case 'delete' :
                     foreach ($request->get('checked') as $checked) {
-                        Post::findOrFail($checked)->delete();
+                        Question::findOrFail($checked)->delete();
                     }
-                    $message = 'Les articles séléctionnés ont été supprimé.';
+                    $message = 'Les questions séléctionnées ont été supprimé.';
                     break;
             }
 
@@ -131,5 +130,7 @@ class PostController extends Controller
         }
 
         return back();
+
+
     }
 }

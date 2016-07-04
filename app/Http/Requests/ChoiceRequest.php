@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class PostRequest extends Request
+class ChoiceRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class PostRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required|string',
-            'content' => 'required|string',
-            'date' => 'date_format:d/m/Y',
+
         ];
     }
 }

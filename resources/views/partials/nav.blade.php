@@ -3,8 +3,14 @@
         <li>Facebook</li>
         @if(!Auth::check())
             <li><a href="{{ url('login') }}">Connexion</a></li>
-        @else
-            <li>Administration</li>
+        @endif
+
+        @if(Auth::check())
+            @if(Auth::user()->isTeacher())
+                <li><a href="{{ action('BackController@index') }}">Administration</a></li>
+            @else
+                <li><a href="{{ action('QCMController@dashboard') }}">Dashboard</a></li>
+            @endif
         @endif
         <li>Social Tag Facebook</li>
         <li>Social Tag Twitter</li>

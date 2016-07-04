@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class PostRequest extends Request
+class RecordRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,8 @@ class PostRequest extends Request
         return [
             'title' => 'required|string',
             'content' => 'required|string',
-            'date' => 'date_format:d/m/Y',
+            'number' => 'required|numeric|min:2',
+            'class_level' => 'required|string|in:premiere,terminale',
         ];
     }
 }

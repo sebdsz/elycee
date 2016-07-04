@@ -38,5 +38,12 @@ class User extends Authenticatable
     {
         if ($this->role === 'teacher')
             return true;
+
+        return false;
+    }
+
+    public function scopeStudent($query)
+    {
+        return $query->where('role', '!=', 'teacher');
     }
 }

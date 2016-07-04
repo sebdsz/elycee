@@ -21,7 +21,7 @@
         @if($errors->has('content')) <span class="error">{{ $errors->first('content') }}</span> @endif
 
         <label for="date">Date</label>
-        <input type="text" value="{{ $post->date }}" name="date" placeholder="dd-mm-YYYY">
+        <input type="text" value="{{ $post->date }}" name="date" placeholder="dd/mm/YYYY">
         @if($errors->has('date')) <span class="error">{{ $errors->first('date') }}</span> @endif
 
         <button>Modifier</button>

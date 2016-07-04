@@ -28,12 +28,16 @@ class Post extends Model
     public function setDateAttribute($date)
     {
         $date = str_replace('/', '-', $date);
-        $date = Carbon::parse($date);
-        $this->attributes['date'] = $date;
+        $this->attributes['date'] = Carbon::parse($date)->format('Y-m-d H:i:s');
     }
 
     public function excerpt($words = 20)
     {
         return Str::words($this->content, $words);
+    }
+
+    public function scopeLast($query, $limit = 5)
+    {
+        return $query->orderBy('date', 'DESC')->take($limit);
     }
 }

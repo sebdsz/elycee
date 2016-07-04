@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use View;
 use App\Post;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -17,7 +18,7 @@ class Controller extends BaseController
     public function __construct()
     {
         View::composer('partials.sidebar', function ($view) {
-            $posts = Post::all();
+            $posts = Post::last(10)->get();
             $view->with(compact('posts'));
         });
     }

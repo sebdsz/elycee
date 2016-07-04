@@ -18,7 +18,7 @@ class CreateQuestionsTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->enum('class_level', ['terminale', 'premiere']);
-            $table->enum('status', ['publish', 'unpublish']);
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

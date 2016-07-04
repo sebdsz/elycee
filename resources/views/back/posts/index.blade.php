@@ -1,0 +1,63 @@
+@extends('layouts.back')
+
+@section('content')
+
+    <h2>Page admin articles</h2>
+    <div>
+        <div class="row">
+            <div class="col-xs-12">
+                @if(Session::has('message'))
+                    {{ Session::get('message') }}
+                @endif
+            </div>
+        </div>
+
+        <div class="pull-right">
+            <a href="{{ action('PostController@create') }}" class="btn btn-primary">Ajouter</a>
+        </div>
+
+        <form action="{{ action('PostController@multiple') }}" method="post">
+            {{ csrf_field() }}
+
+            <div class="row">
+                <div class="form-group col-xs-6 col-md-3">
+                    <select name="action" class="form-control">
+                        <option value="publish">Publier</option>
+                        <option value="unpublish">Dépublier</option>
+                        <option value="delete">Supprimer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary">Appliquer</button>
+                </div>
+            </div>
+
+
+            <table class="table table-bordered">
+                <tr>
+                    <th><input type="checkbox" name="all"></th>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Commentaires</th>
+                    <th>Statut</th>
+                </tr>
+
+                @forelse($posts as $post)
+                    <tr>
+                        <td><input type="checkbox" name="checked[]" value="{{ $post->id }}"></td>
+                        <td><a href="{{ action('PostController@edit', $post) }}">{{ $post->title }}</a></td>
+                        <td>{{ $post->user->username }}</td>
+                        <td>{{ count($post->commentaires) }}</td>
+                        <td>{{ $post->status }}</td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="5">Aucun article dans la base de données.</td>
+                    </tr>
+                @endforelse
+            </table>
+
+        </form>
+    </div>
+
+@endsection

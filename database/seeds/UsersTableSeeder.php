@@ -16,5 +16,12 @@ class UsersTableSeeder extends Seeder
             'role' => 'teacher',
             'password' => \Illuminate\Support\Facades\Hash::make('passpass'),
         ]);
+
+        App\User::create([
+            'username' => 'Gomar',
+            'email' => 'margaux.bossu@gmail.com',
+            'role' => 'first_class',
+            'password' => \Illuminate\Support\Facades\Hash::make('passpass'),
+        ]);
     }
 }

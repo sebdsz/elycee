@@ -13,13 +13,21 @@
                     <p>{{ $post->abstract }}</p>
                     <p>{{ $post->excerpt() }}</p>
                     <a href="{{ action('FrontController@post', $post) }}">Lire la suite</a>
-                    <p>{{ $post->date }}</p>
+                    <p>{{ $post->fullDate() }}</p>
                     <p>{{ $post->user->username }}</p>
                     <p>{{ $post->status }}</p>
                     <p>{{ count($post->comments) }} {{ trans_choice('site.comments', count($post->comments)) }}</p>
                     <div class="comments">
                         @foreach($post->comments as $comment)
                             <div class="comment">
+                                @can('delete', $comment)
+                                <form action="{{ action('CommentController@delete', $comment) }}" method="post">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+
+                                    <button>Supprimer</button>
+                                </form>
+                                @endcan
                                 <p>{{ $comment->content }}</p>
                                 <p title="Le {{ utf8_encode($comment->date->formatLocalized('%A %d %B %Y &agrave; %H:%M:%S')) }}">
                                     Par {{ $comment->user->username }}, il y a {{ $comment->ago() }}.</p>

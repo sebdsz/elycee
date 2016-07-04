@@ -30,6 +30,13 @@ class Post extends Model
         return Carbon::parse($value)->format('d/m/Y');
     }
 
+    public function fullDate()
+    {
+        $date = str_replace('/', '-', $this->date);
+
+        return utf8_encode(Carbon::parse($date)->formatLocalized('%e %B %Y'));
+    }
+
     public function setDateAttribute($date)
     {
         $date = str_replace('/', '-', $date);

@@ -21,4 +21,11 @@ class CommentController extends Controller
         return back()->with('message', 'Votre commentaire a été ajouté.');
 
     }
+
+    public function delete($id)
+    {
+        Comment::findOrFail($id)->delete();
+
+        return back()->with('message', 'Votre commentaire a été éffacé.');
+    }
 }

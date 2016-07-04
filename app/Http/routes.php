@@ -34,6 +34,7 @@ Route::group(['prefix' => 'etudiant', 'middelware' => 'auth'], function () {
     Route::get('/', 'QCMController@dashboard');
     Route::get('/qcm', 'QCMController@index');
     Route::post('comment', 'CommentController@store');
+    Route::delete('comment/delete/{id}', 'CommentController@delete');
 });
 
 

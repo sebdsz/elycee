@@ -21,19 +21,26 @@
 
         </div>
 
-        <label for="title">Titre</label>
-        <input id="title" type="text" value="{{ $post->title }}" name="title" placeholder="Le titre de votre article">
-        @if($errors->has('title')) <span class="error">{{ $errors->first('title') }}</span> @endif
+        <div class="form-group">
+            <label for="title">Titre</label>
+            <input class="form-control" id="title" type="text" value="{{ $post->title }}" name="title"
+                   placeholder="Le titre de votre article">
+            @if($errors->has('title')) <span class="error">{{ $errors->first('title') }}</span> @endif
+        </div>
 
-        <label for="content">Contenu</label>
-        <textarea name="content" id="content">{{ $post->content  }}</textarea>
-        @if($errors->has('content')) <span class="error">{{ $errors->first('content') }}</span> @endif
+        <div class="form-group">
+            <label for="content">Contenu</label>
+            <textarea class="form-control" name="content" id="content">{{ $post->content  }}</textarea>
+            @if($errors->has('content')) <span class="error">{{ $errors->first('content') }}</span> @endif
+        </div>
 
-        <label for="date">Date</label>
-        <input type="text" value="{{ $post->date }}" name="date" placeholder="dd/mm/YYYY">
-        @if($errors->has('date')) <span class="error">{{ $errors->first('date') }}</span> @endif
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input class="form-control" type="text" value="{{ $post->date }}" name="date" placeholder="dd/mm/YYYY">
+            @if($errors->has('date')) <span class="error">{{ $errors->first('date') }}</span> @endif
+        </div>
 
-        <button>Modifier</button>
+        <button class="btn btn-success">Modifier</button>
 
     </form>
 @endsection

@@ -117,31 +117,65 @@ class PostController extends Controller
 
     public function multiple(Request $request)
     {
+        if ($request->get('all')) {
+            return $this->action_all($request);
+        }
         if ($request->get('checked')) {
-            switch ($request->get('action')) {
-                case 'publish' :
-                    foreach ($request->get('checked') as $checked) {
-                        Post::findOrFail($checked)->update(['status' => 1]);
-                    }
-                    $message = 'Les articles séléctionnés ont été publié.';
-                    break;
-                case 'unpublish' :
-                    foreach ($request->get('checked') as $checked) {
-                        Post::findOrFail($checked)->update(['status' => 0]);
-                    }
-                    $message = 'Les articles séléctionnés ont été dépublié.';
-                    break;
-                case 'delete' :
-                    foreach ($request->get('checked') as $checked) {
-                        Post::findOrFail($checked)->delete();
-                    }
-                    $message = 'Les articles séléctionnés ont été supprimé.';
-                    break;
-            }
-
-            return back()->with('message', $message);
+            return $this->action($request);
         }
 
         return back();
+    }
+
+    private function action($request)
+    {
+        switch ($request->get('action')) {
+            case 'publish' :
+                foreach ($request->get('checked') as $checked) {
+                    Post::findOrFail($checked)->update(['status' => 1]);
+                }
+                $message = 'Les articles séléctionnés ont été publié.';
+                break;
+            case 'unpublish' :
+                foreach ($request->get('checked') as $checked) {
+                    Post::findOrFail($checked)->update(['status' => 0]);
+                }
+                $message = 'Les articles séléctionnés ont été dépublié.';
+                break;
+            case 'delete' :
+                foreach ($request->get('checked') as $checked) {
+                    Post::findOrFail($checked)->delete();
+                }
+                $message = 'Les articles séléctionnés ont été supprimé.';
+                break;
+        }
+
+        return back()->with('message', $message);
+    }
+
+    private function action_all($request)
+    {
+        switch ($request->get('action')) {
+            case 'publish' :
+                foreach (Post::all() as $post) {
+                    $post->update(['status' => 1]);
+                }
+                $message = 'Les articles séléctionnés ont été publié.';
+                break;
+            case 'unpublish' :
+                foreach (Post::all() as $post) {
+                    $post->update(['status' => 0]);
+                }
+                $message = 'Les articles séléctionnés ont été dépublié.';
+                break;
+            case 'delete' :
+                foreach (Post::all() as $post) {
+                    $post->delete();
+                }
+                $message = 'Les articles séléctionnés ont été supprimé.';
+                break;
+        }
+
+        return back()->with('message', $message);
     }
 }

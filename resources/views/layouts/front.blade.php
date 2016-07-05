@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>@yield('title', 'E-lycée')</title>
     <link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('css/main.css') }}">
 </head>
 <body>
 @include('partials.nav')

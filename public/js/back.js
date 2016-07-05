@@ -95,7 +95,7 @@ $(function () {
 
 
     /** Transform textarea with tinymce **/
-    tinymce.init({selector: 'textarea'});
+    tinymce.init({selector: 'textarea.editor'});
 
     /** Transform input[type=date] with bootstrap-datepicker **/
     $('input[type=date]').datepicker({

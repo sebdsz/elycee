@@ -97,19 +97,44 @@ class StudentController extends Controller
 
     public function multiple(Request $request)
     {
+        if ($request->get('all')) {
+            return $this->action_all($request);
+        }
         if ($request->get('checked')) {
-            switch ($request->get('action')) {
-                case 'delete' :
-                    foreach ($request->get('checked') as $checked) {
-                        Student::findOrFail($checked)->delete();
-                    }
-                    $message = 'Les étudiants séléctionnés ont été supprimé de la base de données.';
-                    break;
-            }
-
-            return back()->with('message', $message);
+            return $this->action($request);
         }
 
         return back();
+    }
+
+    private function action($request)
+    {
+        switch ($request->get('action')) {
+            case 'delete' :
+                foreach ($request->get('checked') as $checked) {
+                    User::findOrFail($checked)->delete();
+                }
+                $message = 'Les élèves séléctionnés ont été supprimé.';
+                break;
+        }
+
+        if ($request->ajax() || $request->wantsJson())
+            return Post::all()->count();
+
+        return back()->with('message', $message);
+    }
+
+    private function action_all($request)
+    {
+        switch ($request->get('action')) {
+            case 'delete' :
+                foreach (User::student()->get() as $user) {
+                    $user->delete();
+                }
+                $message = 'Les élèves séléctionnés ont été supprimé.';
+                break;
+        }
+
+        return back()->with('message', $message);
     }
 }

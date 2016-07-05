@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <label for="content">Contenu</label>
-            <textarea class="form-control" name="content" id="content">{{ $post->content  }}</textarea>
+            <textarea class="form-control editor" name="content" id="content">{{ $post->content  }}</textarea>
             @if($errors->has('content')) <span class="error">{{ $errors->first('content') }}</span> @endif
         </div>
 

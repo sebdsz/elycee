@@ -104,33 +104,68 @@ class RecordController extends Controller
 
     public function multiple(Request $request)
     {
+        if ($request->get('all')) {
+            return $this->action_all($request);
+        }
         if ($request->get('checked')) {
-            switch ($request->get('action')) {
-                case 'publish' :
-                    foreach ($request->get('checked') as $checked) {
-                        Question::findOrFail($checked)->update(['status' => 1]);
-                    }
-                    $message = 'Les questions séléctionnées ont été publié.';
-                    break;
-                case 'unpublish' :
-                    foreach ($request->get('checked') as $checked) {
-                        Question::findOrFail($checked)->update(['status' => 0]);
-                    }
-                    $message = 'Les questions séléctionnées ont été dépublié.';
-                    break;
-                case 'delete' :
-                    foreach ($request->get('checked') as $checked) {
-                        Question::findOrFail($checked)->delete();
-                    }
-                    $message = 'Les questions séléctionnées ont été supprimé.';
-                    break;
-            }
-
-            return back()->with('message', $message);
+            return $this->action($request);
         }
 
         return back();
+    }
 
+    private function action($request)
+    {
+        switch ($request->get('action')) {
+            case 'publish' :
+                foreach ($request->get('checked') as $checked) {
+                    Question::findOrFail($checked)->update(['status' => 1]);
+                }
+                $message = 'Les questions séléctionnés ont été publié.';
+                break;
+            case 'unpublish' :
+                foreach ($request->get('checked') as $checked) {
+                    Question::findOrFail($checked)->update(['status' => 0]);
+                }
+                $message = 'Les questions séléctionnés ont été dépublié.';
+                break;
+            case 'delete' :
+                foreach ($request->get('checked') as $checked) {
+                    Question::findOrFail($checked)->delete();
+                }
+                $message = 'Les questions séléctionnés ont été supprimé.';
+                break;
+        }
 
+        if ($request->ajax() || $request->wantsJson())
+            return Question::all()->count();
+
+        return back()->with('message', $message);
+    }
+
+    private function action_all($request)
+    {
+        switch ($request->get('action')) {
+            case 'publish' :
+                foreach (Question::all() as $question) {
+                    $question->update(['status' => 1]);
+                }
+                $message = 'Les questions séléctionnés ont été publié.';
+                break;
+            case 'unpublish' :
+                foreach (Question::all() as $question) {
+                    $question->update(['status' => 0]);
+                }
+                $message = 'Les questions séléctionnés ont été dépublié.';
+                break;
+            case 'delete' :
+                foreach (Question::all() as $question) {
+                    $question->delete();
+                }
+                $message = 'Les questions séléctionnés ont été supprimé.';
+                break;
+        }
+
+        return back()->with('message', $message);
     }
 }

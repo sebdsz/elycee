@@ -48,7 +48,7 @@
                         <td><a href="{{ action('PostController@edit', $post) }}">{{ $post->title }}</a></td>
                         <td>{{ $post->user->username }}</td>
                         <td>{{ count($post->commentaires) }}</td>
-                        <td>{{ $post->status }}</td>
+                        <td><div class="status status-{{ $post->status }}"></div></td>
                     </tr>
                 @empty
                     <tr>

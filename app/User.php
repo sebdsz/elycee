@@ -66,4 +66,14 @@ class User extends Authenticatable
     {
         return $query->orderBy('created_at', 'DESC')->take($limit);
     }
+
+    public function score()
+    {
+        $total = 0;
+        foreach ($this->scores as $score) {
+            $total += $score;
+        }
+
+        return $total;
+    }
 }

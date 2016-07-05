@@ -11,7 +11,7 @@
     <h3>Statistiques</h3>
     <div class="score">
         <div>
-            <span class="icon-score"></span> {{ $total }} {{ trans_choice('site.points', $total) }} sur {{ $maxScore }}
+            <span class="icon-score"></span> {{ $student->score() }} {{ trans_choice('site.points', $student->score()) }} sur {{ $maxScore }}
         </div>
         <div>
             <span class="icon-qcm"></span> {{ $totalQCM }} {{ trans_choice('site.qcm_finish', $totalQCM) }}

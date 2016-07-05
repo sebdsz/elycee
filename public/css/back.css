@@ -36,3 +36,21 @@ nav.sidebar-left ul li a {
 .container {
     margin-top: 80px;
 }
+
+.status {
+    width: 20px;
+    height: 20px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+.status.status-1 {
+    background: greenyellow;
+}
+
+.status.status-0 {
+    background: indianred;
+}

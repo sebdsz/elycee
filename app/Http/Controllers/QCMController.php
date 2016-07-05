@@ -19,7 +19,6 @@ class QCMController extends Controller
 
         $scores = $student->scores;
         $newQCM = 0;
-        $total = 0;
         $totalQCM = 0;
         $maxScore = 0;
         $choice = [];
@@ -36,13 +35,12 @@ class QCMController extends Controller
 
         if ($scores) {
             foreach ($scores as $score) {
-                $total += $score->note;
                 $totalQCM++;
             }
         }
 
 
-        return view('back.questions.dashboard', compact('total', 'maxScore', 'totalQCM', 'newQCM'));
+        return view('back.questions.dashboard', compact('student', 'maxScore', 'totalQCM', 'newQCM'));
     }
 
     public function index()

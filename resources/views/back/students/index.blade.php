@@ -37,6 +37,7 @@
                     <th>Identifiant</th>
                     <th>Adresse email</th>
                     <th>Classe</th>
+                    <th>Score</th>
                 </tr>
 
                 @forelse($students as $student)
@@ -45,6 +46,7 @@
                         <td><a href="{{ action('StudentController@edit', $student) }}">{{ $student->username }}</a></td>
                         <td>{{ $student->email }}</td>
                         <td>{{ $student->inClass() }}</td>
+                        <td>{{ $student->score() }}</td>
                     </tr>
                 @empty
                     <tr>

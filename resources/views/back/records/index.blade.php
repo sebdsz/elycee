@@ -38,8 +38,8 @@
                 <tr>
                     <th><input class="all" type="checkbox" name="all"></th>
                     <th>Titre</th>
-                    <th>Auteur</th>
-                    <th>Commentaires</th>
+                    <th>Question</th>
+                    <th>Classe</th>
                     <th>Statut</th>
                 </tr>
 
@@ -49,7 +49,7 @@
                         <td><a href="{{ action('RecordController@edit', $record) }}">{{ $record->title }}</a></td>
                         <td>{{ $record->content }}</td>
                         <td>{{ $record->class_level }}</td>
-                        <td>{{ $record->status }}</td>
+                        <td><div class="status status-{{ $record->status }}"></div></td>
                     </tr>
                 @empty
                     <tr>

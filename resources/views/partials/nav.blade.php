@@ -22,8 +22,9 @@
         <li><a href="{{action('FrontController@posts') }}">Actus</a></li>
         <li><a href="{{ action('FrontController@school') }}">Lycée</a></li>
         <li>
-            <form action="" method="get">
+            <form action="{{ action('FrontController@search') }}" method="get">
                 <input type="text" placeholder="Rechercher" name="q">
+                @if($errors->has('q')) <span class="error">{{ $errors->first('q') }}</span> @endif
                 <button>Rechercher</button>
             </form>
         </li>

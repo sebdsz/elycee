@@ -11,14 +11,14 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('comments', 'user')->get();
+        $posts = Post::with('comments', 'user')->publish()->get();
 
         return view('front.home', compact('posts'));
     }
 
     public function posts()
     {
-        $posts = Post::with('comments', 'user')->get();
+        $posts = Post::with('comments', 'user')->publish()->get();
 
         return view('front.posts', compact('posts'));
     }
@@ -41,5 +41,36 @@ class FrontController extends Controller
     public function contact()
     {
         return view('front.contact');
+    }
+
+    public function search(Requests\SearchRequest $request)
+    {
+        /*$keywords = $request->get('q');
+        $keywords = explode(' ', $keywords);
+
+        foreach ($keywords as $index => $keyword) {
+            if (strlen($keyword) <= 3)
+                unset($keywords[$index]);
+        }
+
+        $posts = Post::publish()
+            ->where(function ($query) use ($keywords) {
+                foreach ($keywords as $keyword) {
+                    $query->orWhere('content', 'LIKE', "%$keyword%");
+                    $query->orWhere('title', 'LIKE', "%$keyword%");
+                }
+            })
+            ->get();*/
+
+        $keywords = $request->get('q');
+
+        $posts = Post::publish()
+            ->where(function ($query) use ($keywords) {
+                $query->orWhere('content', 'LIKE', "%$keywords%");
+                $query->orWhere('title', 'LIKE', "%$keywords%");
+            })
+            ->get();
+
+        return view('front.search', compact('posts', 'keywords'));
     }
 }

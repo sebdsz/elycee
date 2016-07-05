@@ -57,4 +57,9 @@ class Post extends Model
     {
         return $query->orderBy('date', 'DESC')->take($limit);
     }
+
+    public function scopePublish($query)
+    {
+        return $query->where('status', 1);
+    }
 }

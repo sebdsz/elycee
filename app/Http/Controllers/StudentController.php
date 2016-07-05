@@ -119,7 +119,7 @@ class StudentController extends Controller
         }
 
         if ($request->ajax() || $request->wantsJson())
-            return Post::all()->count();
+            return User::all()->count();
 
         return back()->with('message', $message);
     }

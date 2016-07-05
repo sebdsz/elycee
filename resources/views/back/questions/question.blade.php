@@ -14,9 +14,9 @@
                 <div class="form-group">
                     <input type="hidden" name="id[]" value="{{ $choice->id }}">
                     <input id="no-{{$index}}" type="checkbox" value="0" name="status[{{$index}}]">
-                    <label for="no-{{$index}}">Non</label>
+                    <label for="no-{{$index}}">Faux</label>
                     <input id="yes-{{$index}}" type="checkbox" value="1" name="status[{{$index}}]">
-                    <label for="yes-{{$index}}">Oui</label>
+                    <label for="yes-{{$index}}">Vrai</label>
                 </div>
             </div>
         @endforeach

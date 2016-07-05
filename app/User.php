@@ -71,7 +71,7 @@ class User extends Authenticatable
     {
         $total = 0;
         foreach ($this->scores as $score) {
-            $total += $score;
+            $total += $score->note;
         }
 
         return $total;

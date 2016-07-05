@@ -21,22 +21,16 @@ class QCMController extends Controller
         $newQCM = 0;
         $totalQCM = 0;
         $maxScore = 0;
-        $choice = [];
+        $questions = [];
 
         foreach ($scores as $score) {
-            $choice = $score->question_id;
+            $questions = $score->question_id;
+            $totalQCM++;
         }
-        if ($choice) {
-            $choices = Choice::where('question_id', $choice)->get();
-            $newQCM = Question::where('id', '!=', $choice)->get()->count();
-            $maxScore = count($choices);
-
-        }
-
-        if ($scores) {
-            foreach ($scores as $score) {
-                $totalQCM++;
-            }
+        if ($questions) {
+            $qcm = Choice::where('question_id', $questions)->get();
+            $newQCM = Question::where('id', '!=', $questions)->get()->count();
+            $maxScore = count($qcm);
         }
 
 

@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-xs-12">
                 @if(Session::has('message'))
-                    {{ Session::get('message') }}
+                    @include('partials.back.message')
                 @endif
             </div>
         </div>

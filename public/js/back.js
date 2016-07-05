@@ -74,6 +74,20 @@ $(function () {
                             $('span.count').html(count);
                         });
                     }
+                },
+                onAction: function (action) {
+                    if (action === 'confirm') {
+                        $.confirm({
+                            title: 'Supprimer !',
+                            content: 'Les éléments ont été supprimé avec succès !',
+                            autoClose: 'confirm|2000',
+                            closeIcon: false,
+                            cancelButton: false,
+                            backgroundDismiss: true,
+                            confirmButton: 'OK',
+
+                        });
+                    }
                 }
             });
         }
@@ -89,6 +103,10 @@ $(function () {
         language: 'fr',
         todayBtn: true,
         todayHighlight: true,
+    });
+
+    $('button.close').on('click', function () {
+        $(this).parent().fadeOut();
     });
 
 });

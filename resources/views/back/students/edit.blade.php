@@ -5,7 +5,7 @@
 
 
     @if(Session::has('message'))
-        {{ Session::get('message') }}
+        @include('partials.back.message')
     @endif
 
     <form action="{{ action('StudentController@update', $student) }}" method="post" enctype="multipart/form-data">

@@ -13,7 +13,7 @@
 
         <div class="form-group">
             <label for="thumbnail">Thumbnail</label>
-            <input type="file" class="form-control" name="url_thumbnail">
+            <input type="file" name="url_thumbnail">
         </div>
 
         <div class="form-group">

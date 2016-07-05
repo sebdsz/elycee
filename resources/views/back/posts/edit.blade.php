@@ -17,7 +17,7 @@
                 <img src="{{ $post->url_thumbnail() }}" class="img-responsive">
             @endif
             <label for="thumbnail">Thumbnail</label>
-            <input type="file" class="form-control" name="url_thumbnail">
+            <input type="file" name="url_thumbnail">
 
         </div>
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h2>Page admin articles</h2>
+    <h2>Tous les articles (<span class="count">{{count($posts)}}</span>)</h2>
     <div>
         <div class="row">
             <div class="col-xs-12">
@@ -28,14 +28,14 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary">Appliquer</button>
+                    <button class="btn btn-primary action">Appliquer</button>
                 </div>
             </div>
 
 
             <table class="table table-bordered">
                 <tr>
-                    <th><input type="checkbox" name="all"></th>
+                    <th><input class="all" type="checkbox" name="all"></th>
                     <th>Titre</th>
                     <th>Auteur</th>
                     <th>Commentaires</th>
@@ -44,7 +44,7 @@
 
                 @forelse($posts as $post)
                     <tr>
-                        <td><input type="checkbox" name="checked[]" value="{{ $post->id }}"></td>
+                        <td><input class="checked" type="checkbox" name="checked[]" value="{{ $post->id }}"></td>
                         <td><a href="{{ action('PostController@edit', $post) }}">{{ $post->title }}</a></td>
                         <td>{{ $post->user->username }}</td>
                         <td>{{ count($post->commentaires) }}</td>

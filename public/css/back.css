@@ -1,0 +1,38 @@
+nav.sidebar-left {
+    position: fixed;
+    left: 0;
+    top: 65px;
+    bottom: 0;
+    background: #d8d8d8;
+    padding: 20px 40px;
+    border-right: 1px solid #b6b6b6;
+}
+
+nav.sidebar-left ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav.sidebar-left ul li {
+    background: blue;
+    margin-bottom: 5px;
+}
+
+nav.sidebar-left ul li:hover {
+    background: blueviolet;
+}
+
+nav.sidebar-left ul li.active {
+    background: red;
+}
+
+nav.sidebar-left ul li a {
+    display: inline-block;
+    padding: 5px 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    margin-top: 80px;
+}

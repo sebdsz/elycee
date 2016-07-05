@@ -150,6 +150,9 @@ class PostController extends Controller
                 break;
         }
 
+        if ($request->ajax() || $request->wantsJson())
+            return Post::all()->count();
+
         return back()->with('message', $message);
     }
 

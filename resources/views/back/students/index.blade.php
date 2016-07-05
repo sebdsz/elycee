@@ -33,7 +33,7 @@
 
             <table class="table table-bordered">
                 <tr>
-                    <th><input type="checkbox" name="all"></th>
+                    <th><input class="all" type="checkbox" name="all"></th>
                     <th>Identifiant</th>
                     <th>Adresse email</th>
                     <th>Classe</th>
@@ -41,7 +41,7 @@
 
                 @forelse($students as $student)
                     <tr>
-                        <td><input type="checkbox" name="checked[]" value="{{ $student->id }}"></td>
+                        <td><input class="checked" type="checkbox" name="checked[]" value="{{ $student->id }}"></td>
                         <td><a href="{{ action('StudentController@edit', $student) }}">{{ $student->username }}</a></td>
                         <td>{{ $student->email }}</td>
                         <td>{{ $student->inClass() }}</td>

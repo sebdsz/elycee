@@ -36,7 +36,7 @@
 
             <table class="table table-bordered">
                 <tr>
-                    <th><input type="checkbox" name="all"></th>
+                    <th><input class="all" type="checkbox" name="all"></th>
                     <th>Titre</th>
                     <th>Auteur</th>
                     <th>Commentaires</th>
@@ -45,7 +45,7 @@
 
                 @forelse($records as $record)
                     <tr>
-                        <td><input type="checkbox" name="checked[]" value="{{ $record->id }}"></td>
+                        <td><input class="checked" type="checkbox" name="checked[]" value="{{ $record->id }}"></td>
                         <td><a href="{{ action('RecordController@edit', $record) }}">{{ $record->title }}</a></td>
                         <td>{{ $record->content }}</td>
                         <td>{{ $record->class_level }}</td>

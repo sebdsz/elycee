@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <label for="date">Date</label>
-            <input type="text" class="form-control" name="date" placeholder="dd/mm/YYYY" value="{{ old('date') }}">
+            <input type="date" class="form-control" name="date" placeholder="dd/mm/YYYY" value="{{ old('date') }}">
             @if($errors->has('date')) <span class="error">{{ $errors->first('date') }}</span> @endif
         </div>
         <button>Ajouter</button>

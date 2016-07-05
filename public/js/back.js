@@ -45,7 +45,7 @@ $(function () {
                 animation: 'top',
                 closeAnimation: 'bottom',
                 backgroundDismiss: true,
-                animationBounce : 1,
+                animationBounce: 1,
                 animationSpeed: 1000,
                 title: 'Suppression',
                 content: 'Êtes-vous sûr de vouloir le(s) supprimer ?',
@@ -77,6 +77,18 @@ $(function () {
                 }
             });
         }
+    });
+
+
+    /** Transform textarea with tinymce **/
+    tinymce.init({selector: 'textarea'});
+
+    /** Transform input[type=date] with bootstrap-datepicker **/
+    $('input[type=date]').datepicker({
+        format: 'dd/mm/yyyy',
+        language: 'fr',
+        todayBtn: true,
+        todayHighlight: true,
     });
 
 });

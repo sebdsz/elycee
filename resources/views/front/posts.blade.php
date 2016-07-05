@@ -11,9 +11,9 @@
                     <img src="{{ $post->url_thumbnail() }}" alt="">
                     <h4>{{ $post->title }}</h4>
                     <p>{{ $post->abstract }}</p>
-                    <p>{{ $post->excerpt() }}</p>
+                    <p>{!! $post->excerpt() !!}</p>
                     <a href="{{ action('FrontController@post', $post) }}">Lire la suite</a>
-                    <p>{{ $post->date }}</p>
+                    <p>{{ $post->fullDate() }}</p>
                     <p>{{ $post->user->username }}</p>
                     <p>{{ $post->status }}</p>
                     <p>{{ count($post->comments) }} {{ trans_choice('site.comments', count($post->comments)) }}</p>

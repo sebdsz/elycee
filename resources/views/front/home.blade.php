@@ -11,7 +11,7 @@
                     @if($post->url_thumbnail) <img src="{{ $post->url_thumbnail() }}" alt=""> @endif
                     <h4>{{ $post->title }}</h4>
                     <p>{{ $post->abstract }}</p>
-                    <p>{{ $post->excerpt() }}</p>
+                    <p>{!! $post->excerpt() !!}</p>
                     <a href="{{ action('FrontController@post', $post) }}">Lire la suite</a>
                     <p>{{ $post->fullDate() }}</p>
                     <p>{{ $post->user->username }}</p>

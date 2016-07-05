@@ -36,7 +36,7 @@
 
         <div class="form-group">
             <label for="date">Date</label>
-            <input class="form-control" type="text" value="{{ $post->date }}" name="date" placeholder="dd/mm/YYYY">
+            <input class="form-control" type="date" value="{{ $post->date }}" name="date" placeholder="dd/mm/YYYY">
             @if($errors->has('date')) <span class="error">{{ $errors->first('date') }}</span> @endif
         </div>
 

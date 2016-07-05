@@ -1,31 +1,29 @@
 @extends('layouts.front')
 
 @section('content')
-    <h2>Page d'accueil</h2>
+    <h2>Accueil</h2>
 
     <div id="content">
         <div id="posts">
             <h3>Articles</h3>
+            {{ $posts->links() }}
             @foreach($posts as $post)
                 <div class="post">
-                    @if($post->url_thumbnail) <img src="{{ $post->url_thumbnail() }}" alt=""> @endif
+                    @if($post->url_thumbnail) <img src="{{ $post->url_thumbnail() }}" alt="" class="img-responsive"> @endif
                     <h4>{{ $post->title }}</h4>
-                    <p>{{ $post->abstract }}</p>
                     <p>{!! $post->excerpt() !!}</p>
                     <a href="{{ action('FrontController@post', $post) }}">Lire la suite</a>
-                    <p>{{ $post->fullDate() }}</p>
-                    <p>{{ $post->user->username }}</p>
-                    <p>{{ $post->status }}</p>
-                    <p>{{ count($post->comments) }} {{ trans_choice('site.comments', count($post->comments)) }}</p>
+                    <p>Par {{ $post->user->username }}, le {{ $post->fullDate() }}</p>
+                    <p>{{ count($post->comments) }} {{ trans_choice('site.comments', count($post->comments)) }} <span class="icon-comment"></span></p>
                     <div class="comments">
                         @foreach($post->comments as $comment)
                             <div class="comment">
                                 @can('delete', $comment)
-                                <form action="{{ action('CommentController@delete', $comment) }}" method="post">
+                                <form class="pull-right" action="{{ action('CommentController@delete', $comment) }}" method="post">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
 
-                                    <button>Supprimer</button>
+                                    <button class="btn btn-danger" title="Supprimer mon commentaire">x</button>
                                 </form>
                                 @endcan
                                 <p>{{ $comment->content }}</p>
@@ -36,12 +34,15 @@
                         @can('comment', $post)
                         <form action="{{ action('CommentController@store') }}" method="post">
                             {{ csrf_field() }}
-                            <label for="content">Votre commentaire</label>
-                            <input type="hidden" value="{{ $post->id }}" name="post_id">
-                            <textarea name="content" id="content"></textarea>
-                            @if($errors->has('content')) <span
-                                    class="error">{{ $errors->first('content') }}</span> @endif
-                            <button>Commenter</button>
+                            <div class="form-group">
+                                <label for="content">Votre commentaire</label>
+                                <input type="hidden" value="{{ $post->id }}" name="post_id">
+                                <textarea name="content" id="content" class="form-control"></textarea>
+                                @if($errors->has('content'))
+                                    <span class="error">{{ $errors->first('content') }}</span>
+                                @endif
+                            </div>
+                            <button class="btn btn-primary">Commenter</button>
                         </form>
                         @endcan
                     </div>

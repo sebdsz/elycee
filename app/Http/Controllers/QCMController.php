@@ -7,7 +7,9 @@ use App\Score;
 use App\Choice;
 use App\Question;
 use App\Http\Requests;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 
 class QCMController extends Controller
@@ -21,17 +23,18 @@ class QCMController extends Controller
         $newQCM = 0;
         $totalQCM = 0;
         $maxScore = 0;
-        $questions = [];
+        $qcm = [];
 
         foreach ($scores as $score) {
-            $questions = $score->question_id;
+            array_push($qcm, $score->question_id);
             $totalQCM++;
         }
-        if ($questions) {
-            $qcm = Choice::where('question_id', $questions)->get();
-            $newQCM = Question::where('id', '!=', $questions)->get()->count();
-            $maxScore = count($qcm);
+
+
+        foreach ($qcm as $question) {
+            $maxScore += Choice::where('question_id', $question)->get()->count();
         }
+        $newQCM = Question::whereNotIn('id', $qcm)->get()->count();
 
 
         return view('back.questions.dashboard', compact('student', 'maxScore', 'totalQCM', 'newQCM'));
@@ -47,23 +50,30 @@ class QCMController extends Controller
 
     public function question($id)
     {
+        if (Score::where(['question_id' => $id, 'user_id' => Auth::user()->id])->first())
+            return redirect()->action('QCMController@index');
+
         $question = Question::findOrFail($id);
+
+        Session::put('time', Carbon::now());
 
         return view('back.questions.question', compact('question'));
     }
 
-    public function check(Request $request)
+    public function check(Requests\QCMRequest $request)
     {
+
         if ($request->get('id')) {
             $note = 0;
             foreach ($request->get('id') as $key => $id) {
-                $choice = Choice::findOrFail($request->get('id')[$key]);
-                if ($choice->status == $request->get('status')[$key])
-                    $note++;
-                else
-                    $note--;
+                if (isset($request->get('id')[$key]) && isset($request->get('status')[$key])) {
+                    $choice = Choice::findOrFail($request->get('id')[$key]);
+                    if ($choice->status == $request->get('status')[$key])
+                        $note++;
+                    else
+                        $note--;
+                }
             }
-
             $note = $note > 0 ? $note : 0;
 
             Score::create([
@@ -71,8 +81,10 @@ class QCMController extends Controller
                 'question_id' => $request->get('question_id'),
                 'note' => $note,
             ]);
+            $qcm = Question::findOrFail($request->get('question_id'))->title;
+            $time = Carbon::now()->diffInSeconds(Session::get('time'));
 
-            return redirect()->action('QCMController@index')->with('message', 'Vos réponses ont été envoyé aux enseignants, merci !');
+            return redirect()->action('QCMController@index')->with('message', 'Bravo vous avez répondu en ' . $time . ' secondes au QCM "' . $qcm . '", merci !');
         }
     }
 

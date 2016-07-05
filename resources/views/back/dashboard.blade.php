@@ -6,7 +6,7 @@
             <h2>Gestion des fiches</h2>
             <h3>Dernières fiches</h3>
             @forelse($questions as $question)
-                <a href="{{ action('RecordController@edit', $question) }}">{{ $question->title }}</a>
+                <p><a href="{{ action('RecordController@edit', $question) }}">{{ $question->title }}</a></p>
             @empty
                 Aucune question dans la base de données.
             @endforelse

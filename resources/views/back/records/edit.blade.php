@@ -38,7 +38,7 @@
             @if($errors->has('content')) <span class="error">{{ $errors->first('content') }}</span> @endif
         </div>
 
-        <button>Modifier</button>
+        <button class="btn btn-success">Modifier</button>
 
     </form>
 @endsection

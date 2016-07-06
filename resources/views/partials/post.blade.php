@@ -9,7 +9,7 @@
     @foreach($post->comments as $comment)
         <div class="comment">
             @can('delete', $comment)
-            <form class="pull-right" action="{{ action('CommentController@delete', $comment) }}" method="post">
+            <form class="pull-right delete-comment" action="{{ action('CommentController@delete', $comment) }}" method="post">
                 {{ method_field('DELETE') }}
                 {{ csrf_field() }}
 

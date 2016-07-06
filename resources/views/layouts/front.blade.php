@@ -19,5 +19,7 @@
     </div>
 </div>
 @include('partials.footer')
+<script src="{{ url('js/jquery1.min.js') }}"></script>
+<script src="{{ url('js/main.js') }}"></script>
 </body>
 </html>

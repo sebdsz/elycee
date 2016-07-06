@@ -21,18 +21,4 @@
                 Par {{ $comment->user->username }}, il y a {{ $comment->ago() }}.</p>
         </div>
     @endforeach
-    @can('comment', $post)
-    <form action="{{ action('CommentController@store') }}" method="post">
-        {{ csrf_field() }}
-        <div class="form-group">
-            <label for="content">Votre commentaire</label>
-            <input type="hidden" value="{{ $post->id }}" name="post_id">
-            <textarea name="content" id="content" class="form-control"></textarea>
-            @if($errors->has('content'))
-                <span class="error">{{ $errors->first('content') }}</span>
-            @endif
-        </div>
-        <button class="btn btn-primary">Commenter</button>
-    </form>
-    @endcan
 </div>

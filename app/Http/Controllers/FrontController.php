@@ -11,9 +11,10 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('comments', 'user')->publish()->paginate(10);
+        $post = Post::with('comments', 'user')->publish()->last(1)->first();
+        $posts = Post::with('comments', 'user')->publish()->skip(1)->take(10)->get();
 
-        return view('front.home', compact('posts'));
+        return view('front.home', compact('post', 'posts'));
     }
 
     public function posts()

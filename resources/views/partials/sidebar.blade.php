@@ -2,7 +2,7 @@
     <h3>A lire aussi</h3>
     @foreach($posts as $post)
         <div class="list-post">
-            <a href="">{{$post->title}}</a>
+            <a href="{{ action('FrontController@post', $post) }}" title="Voir l'article {{ $post->title }}">{{$post->title}}</a>
         </div>
     @endforeach
     <h3>Derniers tweets</h3>

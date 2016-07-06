@@ -23,7 +23,7 @@ $(function () {
                     headers: {'X-CSRF-TOKEN': token},
                 }).always(function (count) {
                     $comment.fadeOut();
-                    $('.count').html(count);
+                    $comment.parents('.comments').prev('.count').html(count);
                 });
             }
         });

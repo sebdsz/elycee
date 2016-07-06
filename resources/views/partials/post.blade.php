@@ -8,14 +8,6 @@
 <div class="comments">
     @foreach($post->comments as $comment)
         <div class="comment">
-            @can('delete', $comment)
-            <form class="pull-right delete-comment" action="{{ action('CommentController@delete', $comment) }}" method="post">
-                {{ method_field('DELETE') }}
-                {{ csrf_field() }}
-
-                <button class="btn btn-danger" title="Supprimer mon commentaire">x</button>
-            </form>
-            @endcan
             <p>{{ $comment->content }}</p>
             <p title="Le {{ utf8_encode($comment->date->formatLocalized('%A %d %B %Y &agrave; %H:%M:%S')) }}">
                 Par {{ $comment->user->username }}, il y a {{ $comment->ago() }}.</p>

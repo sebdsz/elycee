@@ -8,20 +8,23 @@
             <p>{{ $post->abstract }}</p>
             <p>{!! $post->content !!}</p>
             <p>Écrit par {{ $post->user->username }}, le {{ $post->fullDate() }}</p>
-            <p>{{ count($post->comments) }} {{ trans_choice('site.comments', count($post->comments)) }}</p>
+            <p class="count">{{ count($post->comments) }} {{ trans_choice('site.comments', count($post->comments)) }}</p>
             <div class="comments">
                 @foreach($post->comments as $comment)
-                    <div class="comment">
+                    <div class="box-comment">
                         @can('delete', $comment)
-                        <form class="pull-right delete-comment"
-                              action="{{ action('CommentController@delete', $comment) }}" method="post">
-                            {{ method_field('DELETE') }}
-                            {{ csrf_field() }}
-                            <button class="btn btn-danger" title="Supprimer mon commentaire">x</button>
-                        </form>
+                        <div class="controls pull-right">
+                            <button class="edit-comment" data-url="{{ action('CommentController@update', $comment) }}">Modifier</button>
+                            <form class="delete-comment"
+                                  action="{{ action('CommentController@delete', $comment) }}" method="post">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                <button title="Supprimer mon commentaire">Supprimer</button>
+                            </form>
+                        </div>
                         @endcan
-                        <p>{{ $comment->content }}</p>
-                        <p title="Le {{ utf8_encode($comment->date->formatLocalized('%A %d %B %Y &agrave; %H:%M:%S')) }}">
+                        <p class="comment">{{ $comment->content }}</p>
+                        <p class="info-comment" title="Le {{ utf8_encode($comment->date->formatLocalized('%A %d %B %Y &agrave; %H:%M:%S')) }}">
                             Par {{ $comment->user->username }}, il y a {{ $comment->ago() }}.</p>
                     </div>
                 @endforeach

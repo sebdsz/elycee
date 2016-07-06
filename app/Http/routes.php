@@ -46,6 +46,7 @@ Route::group(['prefix' => 'etudiant', 'middleware' => 'auth'], function () {
     Route::post('comment', 'CommentController@store');
     Route::post('fiche/{id}/check', 'QCMController@check');
     Route::delete('comment/delete/{id}', 'CommentController@delete');
+    Route::put('comment/update/{id}', 'CommentController@update');
 });
 
 

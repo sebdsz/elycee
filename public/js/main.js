@@ -1,9 +1,10 @@
 $(function () {
 
+    var token = $('meta[name=_token]').attr('content');
+
     $(document).on('submit', 'form.delete-comment', function (e) {
         var link = $(this).attr('action'),
-            token = $('meta[name=_token]').attr('content'),
-            $comment = $(this).parent('.comment');
+            $comment = $(this).parents('.box-comment');
         e.preventDefault();
         $.confirm({
             theme: 'white',
@@ -27,6 +28,29 @@ $(function () {
                 });
             }
         });
+    });
+
+    $(document).on('click', 'button.edit-comment', function () {
+        var $this = $(this),
+            link = $this.attr('data-url'),
+            $comment = $this.parents('.comments').find('.comment');
+
+        if ($this.html() === 'Valider') {
+            $.ajax({
+                url: link,
+                type: 'PUT',
+                headers: {'X-CSRF-TOKEN': token},
+                data: {'content' : $comment.html()}
+            }).always(function () {
+                $comment.attr('contenteditable', false);
+                $this.html('Modifier');
+            });
+        } else {
+            $comment.attr('contenteditable', true);
+            $this.html('Valider');
+        }
+
+
     });
 
 })

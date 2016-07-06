@@ -3,7 +3,7 @@
 <p>{!! $post->excerpt() !!}</p>
 <a href="{{ action('FrontController@post', $post) }}">Lire la suite</a>
 <p>Par {{ $post->user->username }}, le {{ $post->fullDate() }}</p>
-<p>{{ count($post->comments) }} {{ trans_choice('site.comments', count($post->comments)) }}
+<p class="count">{{ count($post->comments) }} {{ trans_choice('site.comments', count($post->comments)) }}
     <span class="icon-comment"></span></p>
 <div class="comments">
     @foreach($post->comments as $comment)

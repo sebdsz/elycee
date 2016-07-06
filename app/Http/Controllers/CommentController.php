@@ -22,9 +22,13 @@ class CommentController extends Controller
 
     }
 
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
+        $post_id = Comment::findOrFail($id)->post_id;
         Comment::findOrFail($id)->delete();
+        $count = Comment::where('post_id', $post_id)->count() ? Comment::where('post_id', $post_id)->count() : 0;
+        if ($request->ajax() || $request->wantsJson())
+            return $count . ' ' . trans_choice('site.comments', $count);
 
         return back()->with('message', 'Votre commentaire a été éffacé.');
     }

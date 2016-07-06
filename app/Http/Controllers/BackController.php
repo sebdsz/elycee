@@ -16,7 +16,7 @@ class BackController extends Controller
 
     public function __construct()
     {
-        if (!Auth::user()->isTeacher())
+        if (Auth::check() && !Auth::user()->isTeacher())
             return redirect('QCMController@dashboard');
     }
 

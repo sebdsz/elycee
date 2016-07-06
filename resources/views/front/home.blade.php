@@ -3,7 +3,11 @@
 @section('content')
     <div class="row">
         <div class="post col-xs-12">
-            @include('partials.post')
+            @if($post)
+                @include('partials.post')
+            @else
+                Aucun article
+            @endif
         </div>
     </div>
     <div id="posts" class="row">

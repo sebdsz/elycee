@@ -16,4 +16,12 @@ class CommentPolicy
 
         return false;
     }
+
+    public function update(User $user, Comment $comment)
+    {
+        if ($comment->user->id === $user->id)
+            return true;
+
+        return false;
+    }
 }

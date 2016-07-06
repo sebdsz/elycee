@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Gate;
 use App\Comment;
 use App\Http\Requests;
 use Carbon\Carbon;
@@ -23,9 +24,15 @@ class CommentController extends Controller
 
     public function update(Requests\CommentRequest $request, $id)
     {
+        $comment = Comment::findOrFail($id);
+
+        if (Gate::denies('update', $comment)) {
+            abort(403);
+        }
+
         $content = str_replace('<br>', '', $request->get('content'));
 
-        Comment::findOrFail($id)->update([
+        $comment->update([
             'content' => $content,
         ]);
 
@@ -35,8 +42,14 @@ class CommentController extends Controller
 
     public function delete(Request $request, $id)
     {
-        $post_id = Comment::findOrFail($id)->post_id;
-        Comment::findOrFail($id)->delete();
+        $comment = Comment::findOrFail($id);
+
+        if (Gate::denies('delete', $comment)) {
+            abort(403);
+        }
+
+        $post_id = $comment->post_id;
+        $comment->delete();
         $count = Comment::where('post_id', $post_id)->count() ? Comment::where('post_id', $post_id)->count() : 0;
 
         if ($request->ajax() || $request->wantsJson())

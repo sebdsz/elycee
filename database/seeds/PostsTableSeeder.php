@@ -18,16 +18,20 @@ class PostsTableSeeder extends Seeder
         foreach ($files as $file) File::delete($file);
 
         foreach (App\Post::all() as $post) {
-            $uri = str_random(12) . '_370x235.jpg';
+
+            $uri = str_random(5) . '_627x300.jpg';
             $id = rand(1, 9);
-            rmdir($dirUpload . DIRECTORY_SEPARATOR . $post->id . DIRECTORY_SEPARATOR);
+
+            if (is_dir($dirUpload . DIRECTORY_SEPARATOR . $post->id . DIRECTORY_SEPARATOR)) rmdir($dirUpload . DIRECTORY_SEPARATOR . $post->id . DIRECTORY_SEPARATOR);
             mkdir($dirUpload . DIRECTORY_SEPARATOR . $post->id . DIRECTORY_SEPARATOR, 0700);
+
             $fileName = file_get_contents('http://lorempicsum.com/nemo/627/300/' . $id);
+
             File::put($dirUpload . DIRECTORY_SEPARATOR . $post->id . DIRECTORY_SEPARATOR . $uri, $fileName);
+
             $post->update([
-                    'url_thumbnail' => $uri,
-                ]
-            );
+                'url_thumbnail' => $uri,
+            ]);
         }
     }
 }

@@ -5,12 +5,3 @@
 <p>Par {{ $post->user->username }}, le {{ $post->fullDate() }}</p>
 <p class="count">{{ count($post->comments) }} {{ trans_choice('site.comments', count($post->comments)) }}
     <span class="icon-comment"></span></p>
-<div class="comments">
-    @foreach($post->comments as $comment)
-        <div class="comment">
-            <p>{{ $comment->content }}</p>
-            <p title="Le {{ utf8_encode($comment->date->formatLocalized('%A %d %B %Y &agrave; %H:%M:%S')) }}">
-                Par {{ $comment->user->username }}, il y a {{ $comment->ago() }}.</p>
-        </div>
-    @endforeach
-</div>

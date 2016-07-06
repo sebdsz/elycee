@@ -6,7 +6,7 @@
             @include('partials.post')
         </div>
         @foreach($posts as $post)
-            <div class="post col-xs-4">
+            <div class="post col-xs-12 col-lg-4 col-md-6">
                 @include('partials.post')
             </div>
         @endforeach

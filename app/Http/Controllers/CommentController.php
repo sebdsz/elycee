@@ -36,7 +36,10 @@ class CommentController extends Controller
             'content' => $content,
         ]);
 
-        //return back()->with('message', 'Votre commentaire a été ajouté.');
+        if ($request->ajax() || $request->wantsJson())
+            return 'ok';
+
+        return back()->with('message', 'Votre commentaire a été modifié avec succès.');
     }
 
 

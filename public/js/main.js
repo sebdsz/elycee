@@ -2,12 +2,13 @@ $(function () {
 
     var token = $('meta[name=_token]').attr('content');
 
+    /** SUPPRESSION COMMENTAIRE **/
     $(document).on('submit', 'form.delete-comment', function (e) {
         var link = $(this).attr('action'),
             $comment = $(this).parents('.box-comment');
         e.preventDefault();
         $.confirm({
-            theme: 'white',
+            theme: 'material',
             animation: 'top',
             closeAnimation: 'bottom',
             backgroundDismiss: true,
@@ -30,6 +31,7 @@ $(function () {
         });
     });
 
+    /** EDITION COMMENTAIRE **/
     $(document).on('click', 'button.edit-comment', function () {
         var $this = $(this),
             link = $this.attr('data-url'),
@@ -40,17 +42,31 @@ $(function () {
                 url: link,
                 type: 'PUT',
                 headers: {'X-CSRF-TOKEN': token},
-                data: {'content' : $comment.html()}
-            }).always(function () {
+                data: {'content': $comment.html()}
+            }).done(function () {
                 $comment.attr('contenteditable', false);
                 $this.html('Modifier');
+                $.alert({
+                    theme: 'material',
+                    title: 'Modification',
+                    confirmButton: 'OK',
+                    content: 'Votre commentaire à été modifié avec succès !',
+                    autoClose: 'confirm|3000',
+                });
+
+            }).fail(function () {
+                $.alert({
+                    theme: 'material',
+                    title: 'Erreur',
+                    confirmButton: 'OK',
+                    content: 'Il y a eu une erreur, veuillez réessayer plus tard !',
+                    autoClose: 'confirm|3000',
+                });
             });
         } else {
             $comment.attr('contenteditable', true);
             $this.html('Valider');
         }
-
-
     });
 
 })

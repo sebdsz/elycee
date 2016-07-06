@@ -60,6 +60,6 @@ class Post extends Model
 
     public function scopePublish($query)
     {
-        return $query->where('status', 1);
+        return $query->where('status', 1)->orderBy('date', 'DESC');
     }
 }

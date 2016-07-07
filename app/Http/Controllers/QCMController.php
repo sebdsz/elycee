@@ -20,7 +20,6 @@ class QCMController extends Controller
         $student = Auth::user();
 
         $scores = $student->scores;
-        $newQCM = 0;
         $totalQCM = 0;
         $maxScore = 0;
         $qcm = [];

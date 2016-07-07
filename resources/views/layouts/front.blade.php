@@ -23,7 +23,7 @@
 @include('partials.footer')
 <script src="{{ url('js/jquery1.min.js') }}"></script>
 <script src="{{ url('js/jquery-confirm.min.js') }}"></script>
-<script src="{{ url('plugins/bricks.min.js') }}"></script>
 <script src="{{ url('js/main.js') }}"></script>
+@yield('scripts')
 </body>
 </html>

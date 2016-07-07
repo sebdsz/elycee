@@ -1,3 +1,35 @@
+var popupFail = function () {
+    $.alert({
+        title: 'Erreur !',
+        content: 'Les élements n\'ont pas pu être supprimper, il y a eu une erreur.',
+        autoClose: 'confirm|2000',
+        closeIcon: false,
+        backgroundDismiss: true,
+        confirmButton: 'OK',
+    });
+}
+
+var popupSuccess = function () {
+    $.alert({
+        title: 'Supprimer !',
+        content: 'Les éléments ont été supprimé avec succès !',
+        autoClose: 'confirm|2000',
+        closeIcon: false,
+        backgroundDismiss: true,
+        confirmButton: 'OK',
+    });
+}
+
+var deleteElement = function (item, count) {
+    for (var i = 0; i < item.length; i++) {
+        $tr = item[i].parents('tr');
+        $tr.fadeOut(1000, function () {
+            $tr.remove();
+        })
+        $('span.count').html(count);
+    }
+}
+
 $(function () {
     /** Gestion des checkbox **/
     var $allCheckboxInput = $('input.all'),
@@ -37,6 +69,8 @@ $(function () {
                     checkbox.push($(this));
                 }
             });
+            if (checked.length === 0) return false;
+
             e.preventDefault();
             var link = $(this).parents('form').attr('action'),
                 token = $('meta[name=_token]').attr('content');
@@ -58,8 +92,9 @@ $(function () {
                             type: 'POST',
                             headers: {'X-CSRF-TOKEN': token},
                             data: {all: true, action: 'delete'}
-                        }).always(function () {
-                            location.reload();
+                        }).done(function () {
+                            popupSuccess();
+                            deleteElement(checkbox, 0);
                         });
                     } else {
                         $.ajax({
@@ -67,24 +102,9 @@ $(function () {
                             type: 'POST',
                             headers: {'X-CSRF-TOKEN': token},
                             data: {checked: checked, action: 'delete'}
-                        }).always(function (count) {
-                            $.each(checkbox, function () {
-                                $(this).parents('tr').remove();
-                            });
-                            $('span.count').html(count);
-                        });
-                    }
-                },
-                onAction: function (action) {
-                    if (action === 'confirm') {
-                        $.confirm({
-                            title: 'Supprimer !',
-                            content: 'Les éléments ont été supprimé avec succès !',
-                            autoClose: 'confirm|2000',
-                            closeIcon: false,
-                            cancelButton: false,
-                            backgroundDismiss: true,
-                            confirmButton: 'OK',
+                        }).done(function (count) {
+                            popupSuccess();
+                            deleteElement(checkbox, count);
 
                         });
                     }

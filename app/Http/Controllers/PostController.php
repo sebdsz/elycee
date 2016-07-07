@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use File;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -98,7 +99,14 @@ class PostController extends Controller
      */
     public function destroy($post)
     {
-        $post->delete();
+        if($post) {
+            $dirUpload = public_path(env('UPLOAD_PICTURES', 'uploads'));
+            $files = File::allFiles($dirUpload . DIRECTORY_SEPARATOR . $post->id);
+            foreach ($files as $file) File::delete($file);
+            if (is_dir($dirUpload . DIRECTORY_SEPARATOR . $post->id)) rmdir($dirUpload . DIRECTORY_SEPARATOR . $post->id);
+
+            $post->delete();
+        }
 
         return back()->with('message', 'Article supprimé avec succès !');
     }
@@ -117,14 +125,9 @@ class PostController extends Controller
 
     public function multiple(Request $request)
     {
-        if ($request->get('all')) {
-            return $this->action_all($request);
-        }
-        if ($request->get('checked')) {
-            return $this->action($request);
-        }
+        if ($request->get('all')) return $this->action_all($request);
 
-        return back();
+        if ($request->get('checked')) return $this->action($request);
     }
 
     private function action($request)
@@ -144,14 +147,15 @@ class PostController extends Controller
                 break;
             case 'delete' :
                 foreach ($request->get('checked') as $checked) {
-                    Post::findOrFail($checked)->delete();
+                    $this->destroy(Post::find($checked));
                 }
                 $message = 'Les articles séléctionnés ont été supprimé.';
                 break;
         }
 
-        if ($request->ajax() || $request->wantsJson())
+        if ($request->ajax() || $request->wantsJson()) {
             return Post::all()->count();
+        }
 
         return back()->with('message', $message);
     }
@@ -173,11 +177,12 @@ class PostController extends Controller
                 break;
             case 'delete' :
                 foreach (Post::all() as $post) {
-                    $post->delete();
+                    $this->destroy($post);
                 }
                 $message = 'Les articles séléctionnés ont été supprimé.';
                 break;
         }
+        if ($request->ajax() || $request->wantsJson()) return 'ok';
 
         return back()->with('message', $message);
     }

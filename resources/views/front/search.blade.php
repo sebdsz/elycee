@@ -10,6 +10,7 @@
         <p>{{ count($posts) }} {{ trans_choice('site.postsFind', count($posts)) }} été trouvé.</p>
         <div id="posts">
             <h3>Articles</h3>
+            {{ $posts->links() }}
             @foreach($posts as $post)
                 <div class="post">
                     @if($post->url_thumbnail) <img src="{{ $post->url_thumbnail() }}" alt=""> @endif
@@ -53,4 +54,14 @@
             @endforeach
         </div>
     </div>
+@endsection
+@section('scripts')
+    <style>
+        .mark, mark {
+            background: yellow;
+        }
+    </style>
+    <script>
+        $('#posts').mark("{{ $keywords }}");
+    </script>
 @endsection

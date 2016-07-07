@@ -14,7 +14,9 @@
                     <div class="box-comment">
                         @can('delete', $comment)
                         <div class="controls pull-right">
-                            <button class="edit-comment" data-url="{{ action('CommentController@update', $comment) }}">Modifier</button>
+                            <button class="edit-comment" data-url="{{ action('CommentController@update', $comment) }}">
+                                Modifier
+                            </button>
                             <form class="delete-comment"
                                   action="{{ action('CommentController@delete', $comment) }}" method="post">
                                 {{ method_field('DELETE') }}
@@ -24,7 +26,8 @@
                         </div>
                         @endcan
                         <p class="comment">{{ $comment->content }}</p>
-                        <p class="info-comment" title="Le {{ utf8_encode($comment->date->formatLocalized('%A %d %B %Y &agrave; %H:%M:%S')) }}">
+                        <p class="info-comment"
+                           title="Le {{ utf8_encode($comment->date->formatLocalized('%A %d %B %Y &agrave; %H:%M:%S')) }}">
                             Par {{ $comment->user->username }}, il y a {{ $comment->ago() }}.</p>
                     </div>
                 @endforeach
@@ -41,7 +44,9 @@
                     </div>
                     <button class="btn btn-primary">Commenter</button>
                 </form>
-                @endcan
+                @else
+                    <p>Connectez-vous pour commenter cet article</p>
+                    @endcan
             </div>
         </div>
     </div>

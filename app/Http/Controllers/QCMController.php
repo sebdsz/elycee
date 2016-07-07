@@ -21,8 +21,6 @@ class QCMController extends Controller
         $maxScore = $student->scoreMax();
         $totalQCM = $student->madeQCM();
         $newQCM = $student->newQCM();
-        //$newQCM = Question::whereNotIn('id', $qcm)->get()->count();
-
 
         return view('back.questions.dashboard', compact('student', 'maxScore', 'totalQCM', 'newQCM'));
     }
@@ -37,11 +35,9 @@ class QCMController extends Controller
 
     public function question($id)
     {
-        if (Score::where(['question_id' => $id, 'user_id' => Auth::user()->id])->first())
-            return redirect()->action('QCMController@index');
+        if (Score::where(['question_id' => $id, 'user_id' => Auth::user()->id])->first()) return redirect()->action('QCMController@index');
 
         $question = Question::findOrFail($id);
-
         Session::put('time', Carbon::now());
 
         return view('back.questions.question', compact('question'));
@@ -72,7 +68,9 @@ class QCMController extends Controller
             $qcm = Question::findOrFail($request->get('question_id'))->title;
             $time = Carbon::now()->diffInSeconds(Session::get('time'));
 
-            return redirect()->action('QCMController@index')->with('message', 'Bravo vous avez répondu en ' . $time . ' secondes au QCM "' . $qcm . '", votre résultat est de ' . $note . '/' . $max . ' !');
+            return redirect()
+                ->action('QCMController@index')
+                ->with('message', 'Bravo vous avez répondu en ' . $time . ' secondes au QCM "' . $qcm . '", votre résultat est de ' . $note . '/' . $max . ' !');
         }
     }
 

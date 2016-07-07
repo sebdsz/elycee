@@ -46,7 +46,7 @@
                         <td><a href="{{ action('StudentController@edit', $student) }}">{{ $student->username }}</a></td>
                         <td>{{ $student->email }}</td>
                         <td>{{ $student->inClass() }}</td>
-                        <td>{{ $student->score() }}</td>
+                        <td>{{ $student->scoreAverage() }}/20</td>
                     </tr>
                 @empty
                     <tr>

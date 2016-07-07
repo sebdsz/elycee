@@ -81,11 +81,9 @@ class User extends Authenticatable
     {
         $total = 0;
         $qcm = [];
-
         foreach ($this->scores as $score) {
             array_push($qcm, $score->question_id);
         }
-
         foreach ($qcm as $question) {
             $total += Choice::where('question_id', $question)->get()->count();
         }
@@ -101,7 +99,6 @@ class User extends Authenticatable
     public function newQCM()
     {
         $qcm = [];
-
         foreach ($this->scores as $score) {
             array_push($qcm, $score->question_id);
         }
@@ -122,8 +119,10 @@ class User extends Authenticatable
         return Choice::where('question_id', $question->id)->get()->count();
     }
 
-    public function averageScore()
+    public function scoreAverage($average = 20)
     {
-        $this->score();
+        if($this->scoreMax()) return round(($this->score() * $average) / $this->scoreMax(), 1);
+
+        return 'Aucun QCM validé';
     }
 }

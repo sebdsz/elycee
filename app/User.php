@@ -121,7 +121,7 @@ class User extends Authenticatable
 
     public function scoreAverage($average = 20)
     {
-        if($this->scoreMax()) return round(($this->score() * $average) / $this->scoreMax(), 1);
+        if ($this->scoreMax()) return round(($this->score() * $average) / $this->scoreMax(), 1);
 
         return 'Aucun QCM validé';
     }

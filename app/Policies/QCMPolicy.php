@@ -3,9 +3,9 @@
 namespace App\Policies;
 
 
-use App\Question;
 use App\Score;
 use App\User;
+use App\Question;
 
 class QCMPolicy
 {

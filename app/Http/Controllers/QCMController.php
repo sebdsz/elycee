@@ -6,8 +6,8 @@ use Auth;
 use App\Score;
 use App\Choice;
 use App\Question;
-use App\Http\Requests;
 use Carbon\Carbon;
+use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 

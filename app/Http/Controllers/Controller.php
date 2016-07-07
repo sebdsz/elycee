@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use View;
 use App\Post;
 use Illuminate\Foundation\Bus\DispatchesJobs;

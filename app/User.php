@@ -103,7 +103,7 @@ class User extends Authenticatable
             array_push($qcm, $score->question_id);
         }
 
-        return Question::whereNotIn('id', $qcm)->get()->count();
+        return Question::publish()->whereNotIn('id', $qcm)->get()->count();
     }
 
     public function scoreByQuestion(\App\Question $question)

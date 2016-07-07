@@ -11,6 +11,18 @@
 |
 */
 
+
+$factory->define(App\User::class, function (Faker\Generator $faker) {
+    $role = ['first_class', 'final_class'];
+    return [
+        'username' => $faker->userName,
+        'email' => $faker->safeEmail,
+        'role' => $role[rand(0,1)],
+        'password' => \Illuminate\Support\Facades\Hash::make($faker->password()),
+    ];
+});
+
+
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence(3),

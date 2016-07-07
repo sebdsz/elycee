@@ -23,5 +23,8 @@ class UsersTableSeeder extends Seeder
             'role' => 'first_class',
             'password' => \Illuminate\Support\Facades\Hash::make('passpass'),
         ]);
+
+
+        factory(App\User::class, 30)->create();
     }
 }

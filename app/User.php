@@ -133,6 +133,7 @@ class User extends Authenticatable
         foreach (User::student()->get() as $student) {
             if ($this->scoreAverage() < $student->scoreAverage())
                 $position++;
+
         }
 
         return $position . '/' . $total;

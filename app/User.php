@@ -76,4 +76,16 @@ class User extends Authenticatable
 
         return $total;
     }
+
+    public function scoreByQuestion(\App\Question $question)
+    {
+        $score = Score::where(['question_id' => $question->id, 'user_id' => $this->id])->first();
+
+        return $score->note;
+    }
+
+    public function maxScoreByQuestion(\App\Question $question)
+    {
+        return Choice::where('question_id', $question->id)->get()->count();
+    }
 }

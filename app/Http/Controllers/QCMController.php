@@ -29,7 +29,6 @@ class QCMController extends Controller
             $totalQCM++;
         }
 
-
         foreach ($qcm as $question) {
             $maxScore += Choice::where('question_id', $question)->get()->count();
         }
@@ -74,6 +73,7 @@ class QCMController extends Controller
                 }
             }
             $note = $note > 0 ? $note : 0;
+            $max = count($request->get('id'));
 
             Score::create([
                 'user_id' => Auth::user()->id,
@@ -83,7 +83,7 @@ class QCMController extends Controller
             $qcm = Question::findOrFail($request->get('question_id'))->title;
             $time = Carbon::now()->diffInSeconds(Session::get('time'));
 
-            return redirect()->action('QCMController@index')->with('message', 'Bravo vous avez répondu en ' . $time . ' secondes au QCM "' . $qcm . '", merci !');
+            return redirect()->action('QCMController@index')->with('message', 'Bravo vous avez répondu en ' . $time . ' secondes au QCM "' . $qcm . '", votre résultat est de ' . $note . '/' . $max . ' !');
         }
     }
 

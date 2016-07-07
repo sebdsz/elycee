@@ -9,20 +9,30 @@
     @endif
 
     <div class="questions">
-        @forelse($questions as $question)
+        <table class="table table-bordered">
+            <tr>
+                <th>Status</th>
+                <th>Titre</th>
+                <th>Note</th>
+            </tr>
 
-            <div class="question">
+        @forelse($questions as $question)
+            <tr>
                 @can('can', $question)
-                <span class="icon-undo"></span>
-                <a href="{{ action('QCMController@question', $question) }}">{{ $question->title }}</a>
+                    <td><span class="icon-undo">Pas fait</span></td>
+                    <td><a href="{{ action('QCMController@question', $question) }}">{{ $question->title }}</a></td>
                 @else
-                    <span class="icon-do"></span>
-                    {{ $question->title }}
-                    @endcan
-            </div>
+                    <td><span class="icon-undo">Déjà Fait</span></td>
+                    <td>{{ $question->title }}</td>
+                @endcan
+                <td>{{ Auth::user()->scoreByQuestion($question) }}/{{ Auth::user()->maxScoreByQuestion($question) }}</td>
+            </tr>
         @empty
-            Aucun QCM disponible pour le moment.
+            <tr>
+                <td colspan="3">Aucun QCM disponible pour le moment.</td>
+            </tr>
         @endforelse
+        </table>
     </div>
 
 @endsection

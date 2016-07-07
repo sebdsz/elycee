@@ -127,12 +127,12 @@ class User extends Authenticatable
 
     public function isNumber()
     {
-        $total = User::student()->get()->count();
-        $position = User::student()->get()->count();
+        $total = User::student()->where('role', $this->role)->get()->count();
+        $position = 1;
 
         foreach (User::student()->get() as $student) {
-            if ($this->scoreAverage() > $student->scoreAverage())
-                $position--;
+            if ($this->scoreAverage() < $student->scoreAverage())
+                $position++;
         }
 
         return $position . '/' . $total;

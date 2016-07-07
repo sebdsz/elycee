@@ -77,15 +77,53 @@ class User extends Authenticatable
         return $total;
     }
 
+    public function scoreMax()
+    {
+        $total = 0;
+        $qcm = [];
+
+        foreach ($this->scores as $score) {
+            array_push($qcm, $score->question_id);
+        }
+
+        foreach ($qcm as $question) {
+            $total += Choice::where('question_id', $question)->get()->count();
+        }
+
+        return $total;
+    }
+
+    public function madeQCM()
+    {
+        return count($this->scores);
+    }
+
+    public function newQCM()
+    {
+        $qcm = [];
+
+        foreach ($this->scores as $score) {
+            array_push($qcm, $score->question_id);
+        }
+
+        return Question::whereNotIn('id', $qcm)->get()->count();
+    }
+
     public function scoreByQuestion(\App\Question $question)
     {
         $score = Score::where(['question_id' => $question->id, 'user_id' => $this->id])->first();
+        $score = $score ? $score->note : 0;
 
-        return $score->note;
+        return $score;
     }
 
     public function maxScoreByQuestion(\App\Question $question)
     {
         return Choice::where('question_id', $question->id)->get()->count();
+    }
+
+    public function averageScore()
+    {
+        $this->score();
     }
 }

@@ -18,21 +18,10 @@ class QCMController extends Controller
     public function dashboard()
     {
         $student = Auth::user();
-
-        $scores = $student->scores;
-        $totalQCM = 0;
-        $maxScore = 0;
-        $qcm = [];
-
-        foreach ($scores as $score) {
-            array_push($qcm, $score->question_id);
-            $totalQCM++;
-        }
-
-        foreach ($qcm as $question) {
-            $maxScore += Choice::where('question_id', $question)->get()->count();
-        }
-        $newQCM = Question::whereNotIn('id', $qcm)->get()->count();
+        $maxScore = $student->scoreMax();
+        $totalQCM = $student->madeQCM();
+        $newQCM = $student->newQCM();
+        //$newQCM = Question::whereNotIn('id', $qcm)->get()->count();
 
 
         return view('back.questions.dashboard', compact('student', 'maxScore', 'totalQCM', 'newQCM'));

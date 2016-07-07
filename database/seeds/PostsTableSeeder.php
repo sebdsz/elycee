@@ -13,7 +13,11 @@ class PostsTableSeeder extends Seeder
     {
         factory(App\Post::class, 30)->create();
 
+
         $dirUpload = public_path(env('UPLOAD_PICTURES', 'uploads'));
+
+        if (!is_dir($dirUpload)) mkdir($dirUpload);
+
         $files = File::allFiles($dirUpload);
         foreach ($files as $file) File::delete($file);
 

@@ -86,8 +86,6 @@ class PostController extends Controller
         $post->update($request->all());
         $this->upload($request, $post);
 
-        //$this->deletePicture($request, $post);
-
         return back()->with('message', 'Article modifié avec succès !');
     }
 
@@ -164,7 +162,7 @@ class PostController extends Controller
 
         if ($request->ajax() || $request->wantsJson()) return Post::all()->count();
 
-        // return back()->with('message', 'Les articles séléctionnés ont été supprimé avec succès !');
+        return back()->with('message', 'Les articles séléctionnés ont été supprimé avec succès !');
     }
 
 

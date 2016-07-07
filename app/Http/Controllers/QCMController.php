@@ -17,12 +17,9 @@ class QCMController extends Controller
 
     public function dashboard()
     {
-        $student = Auth::user();
-        $maxScore = $student->scoreMax();
-        $totalQCM = $student->madeQCM();
-        $newQCM = $student->newQCM();
+        $user = Auth::user();
 
-        return view('back.questions.dashboard', compact('student', 'maxScore', 'totalQCM', 'newQCM'));
+        return view('back.questions.dashboard', compact('user'));
     }
 
     public function index()

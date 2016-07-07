@@ -33,7 +33,7 @@
 
             <table class="table table-bordered">
                 <tr>
-                    <th><input class="all" type="checkbox" name="all" title="Cochez toutes les cases"></th>
+                    <th><input class="all" type="checkbox" name="all" title="Cocher toutes les cases"></th>
                     <th>Identifiant</th>
                     <th>Adresse email</th>
                     <th>Classe</th>
@@ -42,7 +42,7 @@
 
                 @forelse($students as $student)
                     <tr>
-                        <td><input class="checked" type="checkbox" name="checked[]" value="{{ $student->id }}" title="Cochez pour séléctionner l'élève correspondant"></td>
+                        <td><input class="checked" type="checkbox" name="checked[]" value="{{ $student->id }}" title="Cocher pour séléctionner l'élève correspondant"></td>
                         <td><a href="{{ action('StudentController@edit', $student) }}">{{ $student->username }}</a></td>
                         <td>{{ $student->email }}</td>
                         <td>{{ $student->inClass() }}</td>

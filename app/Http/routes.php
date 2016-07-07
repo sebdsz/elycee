@@ -29,11 +29,11 @@ Route::get('recherche', 'FrontController@search');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth.teacher'], function () {
     Route::get('', 'BackController@index');
     Route::resource('fiches', 'RecordController');
-    Route::post('fiches/action', 'RecordController@multiple');
+    Route::post('fiches/action', 'RecordController@action');
     Route::resource('articles', 'PostController');
-    Route::post('articles/action', 'PostController@multiple');
+    Route::post('articles/action', 'PostController@action');
     Route::resource('eleves', 'StudentController');
-    Route::post('eleves/action', 'StudentController@multiple');
+    Route::post('eleves/action', 'StudentController@action');
     Route::get('questions/{id}/edit', 'ChoiceController@edit');
     Route::put('questions/{id}/edit', 'ChoiceController@update');
 });

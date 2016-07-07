@@ -86,28 +86,16 @@ $(function () {
                 confirmButton: 'Oui',
                 cancelButton: 'Non',
                 confirm: function () {
-                    if ($allCheckboxInput.is(':checked')) {
-                        $.ajax({
-                            url: link,
-                            type: 'POST',
-                            headers: {'X-CSRF-TOKEN': token},
-                            data: {all: true, action: 'delete'}
-                        }).done(function () {
-                            popupSuccess();
-                            deleteElement(checkbox, 0);
-                        });
-                    } else {
-                        $.ajax({
-                            url: link,
-                            type: 'POST',
-                            headers: {'X-CSRF-TOKEN': token},
-                            data: {checked: checked, action: 'delete'}
-                        }).done(function (count) {
-                            popupSuccess();
-                            deleteElement(checkbox, count);
+                    $.ajax({
+                        url: link,
+                        type: 'POST',
+                        headers: {'X-CSRF-TOKEN': token},
+                        data: {checked: checked, action: 'delete'}
+                    }).done(function (count) {
+                        popupSuccess();
+                        deleteElement(checkbox, count);
 
-                        });
-                    }
+                    });
                 }
             });
         }

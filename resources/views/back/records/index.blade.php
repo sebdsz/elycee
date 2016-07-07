@@ -18,7 +18,7 @@
         </div>
 
 
-        <form action="{{ action('RecordController@multiple') }}" method="post">
+        <form action="{{ action('RecordController@action') }}" method="post">
             {{ csrf_field() }}
             <div class="row">
                 <div class="form-group col-xs-6 col-md-3">

@@ -16,7 +16,7 @@
             <a href="{{ action('PostController@create') }}" class="btn btn-primary">Ajouter</a>
         </div>
 
-        <form action="{{ action('PostController@multiple') }}" method="post">
+        <form action="{{ action('PostController@action') }}" method="post">
             {{ csrf_field() }}
 
             <div class="row">

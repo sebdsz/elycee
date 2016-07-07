@@ -92,49 +92,50 @@ class StudentController extends Controller
     {
         $student->delete();
 
-        return back()->with('message', 'Étudiant supprimé de la base de données avec succès !');
+        //return back()->with('message', 'Étudiant supprimé de la base de données avec succès !');
     }
 
-    public function multiple(Request $request)
-    {
-        if ($request->get('all')) {
-            return $this->action_all($request);
-        }
-        if ($request->get('checked')) {
-            return $this->action($request);
-        }
-
-        return back();
-    }
-
-    private function action($request)
+    public function action(Request $request)
     {
         switch ($request->get('action')) {
+            case 'publish' :
+                return $this->publish($request);
+                break;
+            case 'unpublish' :
+                return $this->unpublish($request);
+                break;
             case 'delete' :
-                foreach ($request->get('checked') as $checked) {
-                    User::findOrFail($checked)->delete();
-                }
-                $message = 'Les élèves séléctionnés ont été supprimé.';
+                return $this->delete($request);
                 break;
         }
-
-        if ($request->ajax() || $request->wantsJson())
-            return User::all()->count();
-
-        return back()->with('message', $message);
     }
 
-    private function action_all($request)
+    private function publish($request)
     {
-        switch ($request->get('action')) {
-            case 'delete' :
-                foreach (User::student()->get() as $user) {
-                    $user->delete();
-                }
-                $message = 'Les élèves séléctionnés ont été supprimé.';
-                break;
+        foreach ($request->get('checked') as $checked) {
+            User::findOrFail($checked)->update(["status" => 1]);
         }
 
-        return back()->with('message', $message);
+        return back()->with('message', 'Les élèves séléctionnés ont été publié avec succès !');
+    }
+
+    private function unpublish($request)
+    {
+        foreach ($request->get('checked') as $checked) {
+            User::findOrFail($checked)->update(['status' => 0]);
+        }
+
+        return back()->with('message', 'Les élèves séléctionnés ont été dépublié avec succès !');
+    }
+
+    private function delete($request)
+    {
+        foreach ($request->get('checked') as $checked) {
+            $this->destroy(User::find($checked));
+        }
+
+        if ($request->ajax() || $request->wantsJson()) return User::all()->count();
+
+        // return back()->with('message', 'Les articles séléctionnés ont été supprimé avec succès !');
     }
 }

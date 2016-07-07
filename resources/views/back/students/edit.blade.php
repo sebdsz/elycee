@@ -2,6 +2,9 @@
 
 @section('content')
     <h2>{{ $student->username }}</h2>
+    @if($student->scoreAverage())
+        <p>Sa moyenne est de {{ $student->scoreAverage(20) }}/20 avec {{ $student->madeQCM() }} {{ trans_choice('site.qcm_finish', $student->madeQCM()) }}. {{ $student->isNumber() }}</p>
+    @endif
 
 
     @if(Session::has('message'))

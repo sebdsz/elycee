@@ -121,8 +121,20 @@ class User extends Authenticatable
 
     public function scoreAverage($average = 20)
     {
-        if ($this->scoreMax()) return round(($this->score() * $average) / $this->scoreMax(), 1) . '/' . $average;
+        if ($this->scoreMax()) return round(($this->score() * $average) / $this->scoreMax(), 1);
+    }
 
-        return 'Aucun QCM validé';
+
+    public function isNumber()
+    {
+        $total = User::student()->get()->count();
+        $position = User::student()->get()->count();
+
+        foreach (User::student()->get() as $student) {
+            if ($this->scoreAverage() > $student->scoreAverage())
+                $position--;
+        }
+
+        return $position . '/' . $total;
     }
 }

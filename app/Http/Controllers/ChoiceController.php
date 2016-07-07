@@ -39,11 +39,22 @@ class ChoiceController extends Controller
                 $choice->content = $request->get('content')[$key];
                 $choice->status = $request->get('status')[$key];
                 $choice->touch();
+
+                if (!$choice->content) $choice->delete();
             }
 
-            return back()->with('message', 'QCM modifié avec succès !');
+            return redirect()->action('RecordController@index')->with('message', 'QCM modifié avec succès !');
         }
 
+    }
+
+    public function store($id)
+    {
+        Choice::create([
+            'question_id' => $id,
+        ]);
+
+        return back()->with('message', 'Nouveau choix ajouté avec succès !');
     }
 
     /**

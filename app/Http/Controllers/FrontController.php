@@ -49,7 +49,8 @@ class FrontController extends Controller
 
         $keywords = $request->get('q');
 
-        $posts = Post::publish()
+        $posts = Post::with('comments', 'user')
+            ->publish()
             ->where(function ($query) use ($keywords) {
                 $query->orWhere('content', 'LIKE', "%$keywords%");
                 $query->orWhere('title', 'LIKE', "%$keywords%");

@@ -9,12 +9,10 @@
     @endif
 
     <h3>Statistiques</h3>
-    @if($user->score())
+    @if(!is_null($user->score()) )
         <div class="score">
             <div>
-                <span class="icon-score"></span> {{ $user->score() }}
-                /{{ $user->scoreMax() }} {{ trans_choice('site.points', $user->scoreMax()) }}
-                soit {{ $user->scoreAverage(20) }}/20 de moyenne.
+                <span class="icon-score"></span> {{ $user->score() }}/{{ $user->scoreMax() }} {{ trans_choice('site.points', $user->scoreMax()) }} soit {{ $user->scoreAverage(20) }}/20 de moyenne.
             </div>
             <div>
                 <span class="icon-qcm"></span> {{ $user->madeQCM() }} {{ trans_choice('site.qcm_finish', $user->madeQCM()) }}

@@ -73,7 +73,6 @@ class User extends Authenticatable
         foreach ($this->scores as $score) {
             $total += $score->note;
         }
-
         return $total;
     }
 
@@ -135,6 +134,8 @@ class User extends Authenticatable
                 $position++;
 
         }
+
+        if ($position > $total) $position = $total;
 
         return $position . '/' . $total;
     }

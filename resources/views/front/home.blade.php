@@ -11,10 +11,16 @@
         </div>
     </div>
     <div id="posts" class="row">
-        @foreach($posts as $post)
-            <div class="post col-xs-12 col-lg-4 col-md-6">
-                @include('partials.post')
+        @foreach($posts as $index => $post)
+            @if($index % 2 == 0)
+            <div class="row">
+            @endif
+                <div class="post col-xs-12 col-md-6">
+                    @include('partials.post', ['index' => 'index'])
+                </div>
+            @if($index % 2 == 1)
             </div>
+            @endif
         @endforeach
     </div>
 @endsection

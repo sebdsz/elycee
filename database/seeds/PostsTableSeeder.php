@@ -11,8 +11,26 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Post::class, 30)->create();
 
+
+        $news = json_decode(XmlToJson::Parse('http://www.lemonde.fr/rss/une.xml'));
+        $news = $news->channel->item;
+        foreach ($news as $item) {
+            foreach ($item->enclosure as $attributes) {
+                $url = $attributes->url;
+            }
+            App\Post::create([
+                'user_id' => 1,
+                'title' => $item->title,
+                'content' => $item->description,
+                'date' => \Carbon\Carbon::parse($item->pubDate),
+                'url_thumbnail' => $url,
+                'status' => 1,
+            ]);
+        }
+
+        /*
+        factory(App\Post::class, 30)->create();
 
         $dirUpload = public_path(env('UPLOAD_PICTURES', 'uploads'));
 
@@ -33,9 +51,8 @@ class PostsTableSeeder extends Seeder
 
             File::put($dirUpload . DIRECTORY_SEPARATOR . $post->id . DIRECTORY_SEPARATOR . $uri, $fileName);
 
-            $post->update([
-                'url_thumbnail' => $uri,
-            ]);
+            $post->update(['url_thumbnail' => $uri,]);
         }
+        */
     }
 }

@@ -45,6 +45,9 @@ class Post extends Model
 
     public function url_thumbnail()
     {
+        if (preg_match('/http/', $this->url_thumbnail))
+            return $this->url_thumbnail;
+
         return url('uploads' . DIRECTORY_SEPARATOR . $this->id . DIRECTORY_SEPARATOR . $this->url_thumbnail);
     }
 

@@ -17,7 +17,7 @@ class Controller extends BaseController
     public function __construct()
     {
         View::composer('partials.sidebar', function ($view) {
-            $posts = Post::last(10)->get();
+            $posts = Post::last(5)->get();
             $view->with(compact('posts'));
         });
     }

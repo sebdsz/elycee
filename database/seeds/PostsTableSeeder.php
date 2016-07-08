@@ -13,7 +13,7 @@ class PostsTableSeeder extends Seeder
     {
 
 
-        $news = json_decode(XmlToJson::Parse('http://www.lemonde.fr/rss/une.xml'));
+        $news = json_decode(XmlToJson::Parse('http://www.lemonde.fr/enseignement-superieur/rss_full.xml'));
         $news = $news->channel->item;
         foreach ($news as $item) {
             foreach ($item->enclosure as $attributes) {

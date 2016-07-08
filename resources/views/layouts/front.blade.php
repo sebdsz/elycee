@@ -15,7 +15,7 @@
         <div class="col-xs-12 col-md-9">
             @yield('content')
         </div>
-        <div class="col-xs-12 col-md-3 hidden-xs">
+        <div id="sidebar" class="col-xs-12 col-md-3 hidden-xs">
             @include('partials.sidebar')
         </div>
     </div>

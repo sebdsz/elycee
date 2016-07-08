@@ -1,19 +1,21 @@
 <nav id="menu-haut">
     <ul>
-        <li>Facebook</li>
+        <li>like (Facebook)</li>
+        <li>Social Tag Facebook</li>
+        <li>Social Tag Twitter</li>
+        <li class="pull-right">
         @if(!Auth::check())
-            <li><a href="{{ url('login') }}">Connexion</a></li>
+           <a href="{{ url('login') }}">Connexion</a>
         @endif
 
         @if(Auth::check())
             @if(Auth::user()->isTeacher())
-                <li><a href="{{ action('BackController@index') }}">Administration</a></li>
+                <a href="{{ action('BackController@index') }}">Administration</a>
             @else
-                <li><a href="{{ action('QCMController@dashboard') }}">Dashboard</a></li>
+               <a href="{{ action('QCMController@dashboard') }}">Dashboard</a>
             @endif
         @endif
-        <li>Social Tag Facebook</li>
-        <li>Social Tag Twitter</li>
+            </li>
     </ul>
 </nav>
 <nav id="menu-principal">

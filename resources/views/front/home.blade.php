@@ -16,7 +16,7 @@
             <div class="row">
             @endif
                 <div class="post col-xs-12 col-md-6">
-                    @include('partials.post', ['index' => 'index'])
+                    @include('partials.post')
                 </div>
             @if($index % 2 == 1)
             </div>

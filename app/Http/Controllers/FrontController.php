@@ -44,6 +44,11 @@ class FrontController extends Controller
         return view('front.contact');
     }
 
+    public function postContact()
+    {
+        exit('ok');
+    }
+
     public function search(Requests\SearchRequest $request)
     {
 

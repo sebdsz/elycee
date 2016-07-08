@@ -24,6 +24,7 @@ Route::get('actualite/{post}', 'FrontController@post');
 Route::get('lycee', 'FrontController@school');
 Route::get('mentions-legale', 'FrontController@legal');
 Route::get('contact', 'FrontController@contact');
+Route::post('contact', 'FrontController@postContact');
 Route::get('recherche', 'FrontController@search');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth.teacher'], function () {

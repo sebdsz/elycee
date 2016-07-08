@@ -24,7 +24,6 @@ class RecordRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required|string',
             'content' => 'required|string',
             'number' => 'required|numeric|min:2',
             'class_level' => 'required|string|in:first_class,final_class',

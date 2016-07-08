@@ -37,7 +37,6 @@
             <table class="table table-bordered">
                 <tr>
                     <th><input class="all" type="checkbox" name="all" title="Cocher toutes les cases"></th>
-                    <th>Titre</th>
                     <th>Question</th>
                     <th>Classe</th>
                     <th>Statut</th>
@@ -46,8 +45,7 @@
                 @forelse($records as $record)
                     <tr>
                         <td><input class="checked" type="checkbox" name="checked[]" value="{{ $record->id }}" title="Cocher pour séléctionner le QCM correspondant"></td>
-                        <td><a href="{{ action('RecordController@edit', $record) }}">{{ $record->title }}</a></td>
-                        <td>{{ $record->content }}</td>
+                        <td><a href="{{ action('RecordController@edit', $record) }}">{{ $record->content }}</a></td>
                         <td>{{ $record->class_level }}</td>
                         <td><div class="status status-{{ $record->status }}"></div></td>
                     </tr>

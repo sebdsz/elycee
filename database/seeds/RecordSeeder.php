@@ -12,8 +12,25 @@ class RecordSeeder extends Seeder
     public function run()
     {
         App\Question::create([
-            'title' => 'Machine de turing',
             'content' => 'La machine de turing c\'est quoi ?',
+            'class_level' => 'first_class',
+            'status' => 1,
+        ]);
+
+        App\Question::create([
+            'content' => 'La vitesse d\'une réaction chimique',
+            'class_level' => 'first_class',
+            'status' => 1,
+        ]);
+
+        App\Question::create([
+            'content' => 'Quelle affirmation est correcte ?',
+            'class_level' => 'first_class',
+            'status' => 1,
+        ]);
+
+        App\Question::create([
+            'content' => 'La trempe',
             'class_level' => 'first_class',
             'status' => 1,
         ]);

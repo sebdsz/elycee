@@ -2,7 +2,6 @@
 @section('title', 'E-lycée - QCM')
 @section('content')
     <p>Attention, mauvaise réponse : -1 point, bonne réponse : +1 point</p>
-    <h2> {{ $question->title }}</h2>
     <h3> {{ $question->content }}</h3>
 
     <form action="{{ action('QCMController@check', $question) }}" method="post">

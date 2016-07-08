@@ -20,10 +20,10 @@
             <tr>
                 @can('can', $question)
                     <td><span class="icon-undo">Pas fait</span></td>
-                    <td><a href="{{ action('QCMController@question', $question) }}">{{ $question->title }}</a></td>
+                    <td><a href="{{ action('QCMController@question', $question) }}">{{ $question->content }}</a></td>
                 @else
                     <td><span class="icon-undo">Déjà Fait</span></td>
-                    <td>{{ $question->title }}</td>
+                    <td>{{ $question->content }}</td>
                 @endcan
                 <td>{{ Auth::user()->scoreByQuestion($question) }}/{{ Auth::user()->maxScoreByQuestion($question) }}</td>
             </tr>

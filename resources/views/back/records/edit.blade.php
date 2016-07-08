@@ -27,12 +27,6 @@
         </div>
 
         <div class="form-group">
-            <label for="title">Titre (*)</label>
-            <input id="title" class="form-control" type="text" value="{{ $record->title }}" name="title" placeholder="Le titre de votre question" required>
-            @if($errors->has('title')) <span class="error">{{ $errors->first('title') }}</span> @endif
-        </div>
-
-        <div class="form-group">
             <label for="content">Rédaction de la question (*)</label>
             <textarea name="content" class="form-control" id="content" required>{{ $record->content }}</textarea>
             @if($errors->has('content')) <span class="error">{{ $errors->first('content') }}</span> @endif

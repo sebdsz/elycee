@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth.teacher'], function () 
     Route::post('fiches/action', 'RecordController@action');
     Route::resource('articles', 'PostController');
     Route::post('articles/action', 'PostController@action');
+    Route::post('articles/feed', 'PostController@feed');
     Route::resource('eleves', 'StudentController');
     Route::post('eleves/action', 'StudentController@action');
     Route::get('questions/{id}/edit', 'ChoiceController@edit');

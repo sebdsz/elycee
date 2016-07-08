@@ -17,6 +17,9 @@ var popupSuccess = function () {
         closeIcon: false,
         backgroundDismiss: true,
         confirmButton: 'OK',
+        confirm: function () {
+            location.reload();
+        }
     });
 }
 
@@ -92,6 +95,9 @@ $(function () {
                         headers: {'X-CSRF-TOKEN': token},
                         data: {checked: checked, action: 'delete'}
                     }).done(function (count) {
+                        $.each($checkboxsInput, function () {
+                            $(this).prop('checked', false);
+                        });
                         popupSuccess();
                         deleteElement(checkbox, count);
 

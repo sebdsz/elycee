@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use File;
 use App\Post;
+use App\Helpers\XmlToJson;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -18,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('date', 'DESC')->get();
 
         return view('back.posts.index', compact('posts'));
     }
@@ -99,10 +100,11 @@ class PostController extends Controller
     {
         if ($post) {
             $dirUpload = public_path(env('UPLOAD_PICTURES', 'uploads'));
-            $files = File::allFiles($dirUpload . DIRECTORY_SEPARATOR . $post->id);
-            foreach ($files as $file) File::delete($file);
-            if (is_dir($dirUpload . DIRECTORY_SEPARATOR . $post->id)) rmdir($dirUpload . DIRECTORY_SEPARATOR . $post->id);
-
+            if (is_dir($dirUpload . DIRECTORY_SEPARATOR . $post->id)) {
+                $files = File::allFiles($dirUpload . DIRECTORY_SEPARATOR . $post->id);
+                foreach ($files as $file) File::delete($file);
+                rmdir($dirUpload . DIRECTORY_SEPARATOR . $post->id);
+            }
             $post->delete();
         }
 
@@ -165,5 +167,30 @@ class PostController extends Controller
         return back()->with('message', 'Les articles séléctionnés ont été supprimé avec succès !');
     }
 
+    public function feed()
+    {
+        $lastsNews = Post::all()->count();
 
+        $news = json_decode(XmlToJson::Parse('http://www.lemonde.fr/enseignement-superieur/rss_full.xml'));
+        $news = $news->channel->item;
+
+        foreach ($news as $item) {
+            foreach ($item->enclosure as $attributes) $url = $attributes->url;
+
+            Post::firstOrcreate([
+                'user_id' => Auth::user()->id,
+                'title' => $item->title,
+                'content' => $item->description,
+                'date' => \Carbon\Carbon::parse($item->pubDate),
+                'url_thumbnail' => $url,
+                'status' => 1,
+            ]);
+        }
+
+        $newNews = Post::all()->count() - $lastsNews;
+
+        if ($newNews == 0) return back()->with('message', 'Tous les articles ont déjà été importé.');
+
+        return back()->with('message', $newNews . ' ' . trans_choice('site.postsFind', $newNews) . " été importé du site Le Monde avec succès !");
+    }
 }

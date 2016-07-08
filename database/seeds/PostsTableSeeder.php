@@ -12,6 +12,11 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
 
+        App\Config::create([
+            'name' => 'News feed',
+            'value' => 0,
+        ]);
+
 
         $news = json_decode(XmlToJson::Parse('http://www.lemonde.fr/enseignement-superieur/rss_full.xml'));
         $news = $news->channel->item;
@@ -28,6 +33,7 @@ class PostsTableSeeder extends Seeder
                 'status' => 1,
             ]);
         }
+
 
         /*
         factory(App\Post::class, 30)->create();

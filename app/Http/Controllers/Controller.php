@@ -20,5 +20,6 @@ class Controller extends BaseController
             $posts = Post::last(5)->get();
             $view->with(compact('posts'));
         });
+
     }
 }

@@ -2,7 +2,16 @@
 
 @section('content')
 
-    <h2>Tous les articles (<span class="count">{{count($posts)}}</span>)</h2>
+    <div class="row">
+        <div class="col-xs-12" style="margin-bottom: 25px">
+            <h2 style="margin:0 25px 0 0" class="pull-left">Tous les articles (<span class="count">{{count($posts)}}</span>)</h2>
+            <form class="pull-left" action="{{ action('PostController@feed') }}" method="post">
+                {{ csrf_field() }}
+                <button class="btn btn-warning">Importer des news via le flux rss le monde ?</button>
+            </form>
+        </div>
+    </div>
+
     <div>
         <div class="row">
             <div class="col-xs-12">
@@ -46,11 +55,14 @@
 
                 @forelse($posts as $post)
                     <tr>
-                        <td><input class="checked" type="checkbox" name="checked[]" value="{{ $post->id }}" title="Cocher cette case pour séléctionner l'article correspondant"></td>
+                        <td><input class="checked" type="checkbox" name="checked[]" value="{{ $post->id }}"
+                                   title="Cocher cette case pour séléctionner l'article correspondant"></td>
                         <td><a href="{{ action('PostController@edit', $post) }}">{{ $post->title }}</a></td>
                         <td>{{ $post->user->username }}</td>
                         <td>{{ count($post->commentaires) }}</td>
-                        <td><div class="status status-{{ $post->status }}"></div></td>
+                        <td>
+                            <div class="status status-{{ $post->status }}"></div>
+                        </td>
                     </tr>
                 @empty
                     <tr>

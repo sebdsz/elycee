@@ -6,7 +6,3 @@ E-Lycée est un portail dédié aux enseignants et élèves, il permet la mise e
 ## Installation
 
 git clone https://github.com/sebdsz/elycee.git, composer update, php artisan key:generate, créer le fichier .env ajouter LOCALE=fr (pour le fichier de localisation en français), lancer le install.sh, php artisan serve, et direction localhost:8000 !
-
-## Petit plus
-
-Ajouter FEED_NEWS=true à votre fichier .env pour importer automatiquement les news étude supérieur du site Le monde.

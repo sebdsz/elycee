@@ -19,7 +19,7 @@
                         <div class="post col-xs-12 col-md-6">
                             @include('partials.post')
                         </div>
-                        @if($index % 2 == 1)
+                        @if($index % 2 == 1 || count($posts) < 2)
                     </div>
                 @endif
             @endforeach

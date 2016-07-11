@@ -1,15 +1,20 @@
 <nav id="menu-haut">
-    <ul class="pull-right">
-        <li><a href="">like (Facebook)</a></li>
-        <li><a href="">Social Tag Facebook</a></li>
-        <li><a href="">Social Tag Twitter</a></li>
-    </ul>
+    <div class="fb-like pull-right" data-href="https://www.facebook.com/lecolemultimedia" data-layout="button_count"
+         data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+    <div class="pull-right" style="width:200px;">
+        <a href="https://twitter.com/ecolemultimedia" class="twitter-follow-button" data-show-count="false"
+            data-size="large" data-dnt="true">Follow @ecolemultimedia</a>
+    </div>
+
 </nav>
 <nav id="menu-principal">
     <ul>
-        <li id="logo" class="{{ Request::is('/') ? 'active': '' }}"><a href="{{ action('FrontController@index') }}">E-Lycée</a></li>
-        <li class="{{ Request::is('actualites') || Request::is('actualite*') ? 'active': '' }}"><a href="{{action('FrontController@posts') }}">Actualités</a></li>
-        <li class="{{ Request::is('lycee') ? 'active': '' }}"><a href="{{ action('FrontController@school') }}">Lycée</a></li>
+        <li id="logo" class="{{ Request::is('/') ? 'active': '' }}"><a href="{{ action('FrontController@index') }}">E-Lycée</a>
+        </li>
+        <li class="{{ Request::is('actualites') || Request::is('actualite*') ? 'active': '' }}"><a
+                    href="{{action('FrontController@posts') }}">Actualités</a></li>
+        <li class="{{ Request::is('lycee') ? 'active': '' }}"><a href="{{ action('FrontController@school') }}">Lycée</a>
+        </li>
     </ul>
     <ul class="pull-right">
         <li>

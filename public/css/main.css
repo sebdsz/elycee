@@ -35,8 +35,9 @@ h4 {
 }
 
 nav#menu-haut {
-    height: 45px;
-    line-height: 45px;
+    height: auto;
+    line-height: 1;
+    padding: 10px;
     background: #337ab7;
 }
 

@@ -14,7 +14,8 @@
                     <div class="box-comment">
                         @can('delete', $comment)
                         <div class="controls pull-right">
-                            <button class="edit-comment" data-url="{{ action('CommentController@update', $comment) }}">
+                            <button class="edit-comment"
+                                    data-url="{{ action('CommentController@update', $comment) }}">
                                 Modifier
                             </button>
                             <form class="delete-comment"

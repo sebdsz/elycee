@@ -88,13 +88,27 @@ nav ul li a {
 nav ul li a:hover {
     color: white;
     text-decoration: none;
-    background: #337AB7;
+    background: #EA6A2A;
+}
+
+nav ul li.active a {
+    background: #EA6A2A;;
+}
+
+nav ul li form .input-group-addon:hover {
+    background: #EA6A2A;
+}
+
+nav ul li form button {
+    padding: 6px 12px;
+    display: block;
 }
 
 .input-group-addon {
     background: #337AB7;
     border: none;
     color: white;
+    padding: 0;
 }
 
 .input-group-addon button {
@@ -175,7 +189,7 @@ footer ul li a:hover {
 
 .post > div .content {
     padding: 20px;
-    border: 1px solid rgba(51, 122, 183, 0.5);
+    border: 1px solid rgba(51, 122, 183, 1);
     border-top: 0;
 }
 
@@ -183,7 +197,7 @@ footer ul li a:hover {
     display: block;
     margin: 0 auto;
     width: 100%;
-    height:auto;
+    height: auto;
 }
 
 p.byUser {
@@ -199,6 +213,12 @@ a.read {
     color: white;
     background: #337AB7;
     padding: 5px 10px;
+    font-weight: 500;
+    font-style: italic;
+}
+a.read:hover {
+    text-decoration: none;
+    background: #EA6A2A;
 }
 
 p.count {

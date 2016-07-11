@@ -60,10 +60,13 @@ class FrontController extends Controller
             ->where(function ($query) use ($keywords) {
                 $query->orWhere('content', 'LIKE', "%$keywords%");
                 $query->orWhere('title', 'LIKE', "%$keywords%");
-            })
+            });
+        $total = $posts->count();
+
+        $posts = $posts
             ->paginate(10)
             ->setPath('recherche?q=' . $keywords);
 
-        return view('front.search', compact('posts', 'keywords'));
+        return view('front.search', compact('posts', 'keywords', 'total'));
     }
 }

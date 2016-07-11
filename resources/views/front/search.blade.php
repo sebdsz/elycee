@@ -6,8 +6,8 @@
     <div id="content">
 
 
-        <p>Vous avez recherché tous les articles qui ont le contenu suivant : {{ $keywords }}</p>
-        <p>{{ count($posts) }} {{ trans_choice('site.postsFind', count($posts)) }} été trouvé.</p>
+        <p>Vous avez recherché tous les articles contenant le mot clé suivant : {{ $keywords }}.</p>
+        <p>{{ $total }} {{ trans_choice('site.postsFind', $total) }} été trouvé.</p>
         <div id="posts">
             <h3>Articles</h3>
             {{ $posts->links() }}
@@ -15,8 +15,7 @@
                 <div class="post">
                     @if($post->url_thumbnail) <img src="{{ $post->url_thumbnail() }}" alt=""> @endif
                     <h4>{{ $post->title }}</h4>
-                    <p>{{ $post->abstract }}</p>
-                    <p>{!! $post->excerpt() !!}</p>
+                    <p class="content">{!! $post->excerpt() !!}</p>
                     <a href="{{ action('FrontController@post', $post) }}">Lire la suite</a>
                     <p>{{ $post->fullDate() }}</p>
                     <p>{{ $post->user->username }}</p>
@@ -59,9 +58,10 @@
     <style>
         .mark, mark {
             background: yellow;
+            padding: 5px 0;
         }
     </style>
     <script>
-        $('#posts').mark("{{ $keywords }}");
+        $('h4, p.content').mark("{{ $keywords }}");
     </script>
 @endsection

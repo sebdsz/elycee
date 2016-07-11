@@ -7,9 +7,9 @@
 </nav>
 <nav id="menu-principal">
     <ul>
-        <li id="logo"><a href="{{ action('FrontController@index') }}">E-Lycée</a></li>
-        <li><a href="{{action('FrontController@posts') }}">Actualités</a></li>
-        <li><a href="{{ action('FrontController@school') }}">Lycée</a></li>
+        <li id="logo" class="{{ Request::is('/') ? 'active': '' }}"><a href="{{ action('FrontController@index') }}">E-Lycée</a></li>
+        <li class="{{ Request::is('actualites') || Request::is('actualite*') ? 'active': '' }}"><a href="{{action('FrontController@posts') }}">Actualités</a></li>
+        <li class="{{ Request::is('lycee') ? 'active': '' }}"><a href="{{ action('FrontController@school') }}">Lycée</a></li>
     </ul>
     <ul class="pull-right">
         <li>

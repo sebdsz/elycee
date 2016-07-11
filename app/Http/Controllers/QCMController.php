@@ -30,9 +30,9 @@ class QCMController extends Controller
         return view('back.questions.index', compact('questions'));
     }
 
-    public function question($id)
+    public function question(Request $request, $id)
     {
-        if (Score::where(['question_id' => $id, 'user_id' => Auth::user()->id])->first()) return redirect()->action('QCMController@index');
+        if (Score::where(['question_id' => $id, 'user_id' => Auth::user()->id])->first() && !Session::has('success')) return redirect()->action('QCMController@index');
 
         $question = Question::findOrFail($id);
         Session::put('time', Carbon::now());
@@ -45,13 +45,19 @@ class QCMController extends Controller
 
         if ($request->get('id')) {
             $note = 0;
+            $success = [];
+            $checked = [];
             foreach ($request->get('id') as $key => $id) {
                 if (isset($request->get('id')[$key]) && isset($request->get('status')[$key])) {
+                    $checked[$key] = $request->get('status')[$key];
                     $choice = Choice::findOrFail($request->get('id')[$key]);
-                    if ($choice->status == $request->get('status')[$key])
+                    if ($choice->status == $request->get('status')[$key]) {
                         $note++;
-                    else
+                        $success[$key] = 1;
+                    } else {
                         $note--;
+                        $success[$key] = 0;
+                    }
                 }
             }
             $note = $note > 0 ? $note : 0;
@@ -65,9 +71,12 @@ class QCMController extends Controller
             $qcm = Question::findOrFail($request->get('question_id'))->title;
             $time = Carbon::now()->diffInSeconds(Session::get('time'));
 
-            return redirect()
-                ->action('QCMController@index')
-                ->with('message', 'Bravo vous avez répondu en ' . $time . ' secondes au QCM "' . $qcm . '", votre résultat est de ' . $note . '/' . $max . ' !');
+            return back()
+                ->with('checked', $checked)
+                ->with('success', $success)
+                ->with('note', $note)
+                ->with('max', $max)
+                ->with('timer', $time);
         }
     }
 

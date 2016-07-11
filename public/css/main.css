@@ -185,7 +185,7 @@ footer ul li a:hover {
 }
 
 .post > div {
-
+    
 }
 
 .post > div .content {
@@ -199,6 +199,8 @@ footer ul li a:hover {
     margin: 0 auto;
     width: 100%;
     height: auto;
+    border: 1px solid rgba(51, 122, 183, 1);
+    border-bottom: 0;
 }
 
 p.byUser {

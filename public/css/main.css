@@ -31,11 +31,11 @@ nav#menu-haut {
     padding: 10px;
     background: #337ab7;
     top: 0;
-    height:50px;
+    height: 40px;
 }
 
 nav#menu-principal {
-    top: 50px;
+    top: 40px;
 }
 
 nav#menu-principal ul.pull-right li {
@@ -213,12 +213,16 @@ footer ul li a:hover {
     border: 1px solid rgba(51, 122, 183, 1);
     border-bottom: 0;
 }
+#content .post p.count {
+    margin:15px 0 0 0;
+}
 
 p.byUser {
     font-style: italic;
     float: right;
     color: #337AB7;
     font-weight: 300;
+    margin: 15px 0 0 0;
 }
 
 a.read {
@@ -230,15 +234,12 @@ a.read {
     font-weight: 500;
     font-style: italic;
     border-radius: 15px;
+    margin-top: 9px;
 }
 
 a.read:hover {
     text-decoration: none;
     background: #EA6A2A;
-}
-
-p.count {
-    margin-top: 15px;
 }
 
 .pagination {

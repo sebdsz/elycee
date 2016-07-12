@@ -1,9 +1,9 @@
 <nav id="menu-haut">
     <div class="fb-like pull-right" data-href="https://www.facebook.com/lecolemultimedia" data-layout="button_count"
-         data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
-    <div class="pull-right" style="width:200px;">
+         data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
+    <div class="pull-right" style="width:170px;">
         <a href="https://twitter.com/ecolemultimedia" class="twitter-follow-button" data-show-count="false"
-           data-size="large" data-dnt="true">Follow @ecolemultimedia</a>
+           data-size="small" data-dnt="true">Follow @ecolemultimedia</a>
     </div>
 
 </nav>

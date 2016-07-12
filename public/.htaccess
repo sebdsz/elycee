@@ -37,12 +37,11 @@
 	ExpiresByType application/xhtml+xml 	"access plus 7200 seconds"
 	ExpiresByType application/javascript 	"access plus 1 week"
 	ExpiresByType application/x-javascript 	"access plus 1 week"
-	ExpiresByType application/x-shockwave-flash "access plus 1 week"
 </IfModule>
 
 <IfModule mod_headers.c>
 
-<FilesMatch "\\.(ico|jpe?g|png|gif|swf)$">
+<FilesMatch "\\.(ico|jpe?g|png|gif)$">
 Header set Cache-Control "max-age=2592000, public"
 </FilesMatch>
 
@@ -54,7 +53,7 @@ Header set Cache-Control "max-age=604800, public"
 Header set Cache-Control "max-age=216000, private"
 </FilesMatch>
 
-<FilesMatch "\\.(php)$">
+<FilesMatch "\\.(x?html?|php)$">
 Header set Cache-Control "max-age=600, private, must-revalidate"
 </FilesMatch>
 

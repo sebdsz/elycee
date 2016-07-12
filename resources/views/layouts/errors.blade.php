@@ -5,14 +5,16 @@
     <meta name="_token" content="{{ csrf_token() }}"/>
     <title>@yield('title', 'E-lycée - 404 error')</title>
     <link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url('css/jquery-confirm.min.css') }}">
     <link rel="stylesheet" href="{{ url('css/main.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,100italic,400italic,700,900,500' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-md-12">
+@include('partials.nav')
+<div class="container" style="height:100%">
+    <div class="row" style="height:90%">
+        <div class="col-xs-12" style="height:100%">
             @yield('content')
         </div>
     </div>

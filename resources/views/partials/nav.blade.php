@@ -3,7 +3,7 @@
          data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
     <div class="pull-right" style="width:200px;">
         <a href="https://twitter.com/ecolemultimedia" class="twitter-follow-button" data-show-count="false"
-            data-size="large" data-dnt="true">Follow @ecolemultimedia</a>
+           data-size="large" data-dnt="true">Follow @ecolemultimedia</a>
     </div>
 
 </nav>
@@ -24,7 +24,9 @@
                     <span class="input-group-addon"><button><span class="glyphicon glyphicon-search"></span>
                         </button></span>
                 </div>
-                @if($errors->has('q')) <span class="error">{{ $errors->first('q') }}</span> @endif
+                @if(isset($errors))
+                    @if($errors->has('q')) <span class="error">{{ $errors->first('q') }}</span> @endif
+                @endif
             </form>
         </li>
         <li>

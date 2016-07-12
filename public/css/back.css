@@ -128,4 +128,8 @@ nav.sidebar-left ul li a {
 .container > div {
     background: white;
     padding: 15px;
+    margin-bottom: 15px;
+    -webkit-box-shadow: 1px 1px 10px rgba(0,0,0,.1);
+    -moz-box-shadow: 1px 1px 10px rgba(0,0,0,.1);
+    box-shadow: 1px 1px 10px rgba(0,0,0,.1);
 }

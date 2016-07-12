@@ -14,7 +14,7 @@
         </div>
 
         <div class="pull-right">
-            <a href="{{ action('RecordController@create') }}" class="btn btn-primary">Ajouter</a>
+            <a href="{{ action('RecordController@create') }}" class="btn btn-add">+</a>
         </div>
 
 

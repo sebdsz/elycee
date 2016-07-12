@@ -1,11 +1,14 @@
+html, body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+}
+
 nav.sidebar-left {
     position: fixed;
     left: 0;
     top: 65px;
     bottom: 0;
-    background: #d8d8d8;
-    padding: 20px 40px;
-    border-right: 1px solid #b6b6b6;
+    background: #404040;
 }
 
 nav.sidebar-left ul {
@@ -14,21 +17,21 @@ nav.sidebar-left ul {
 }
 
 nav.sidebar-left ul li {
-    background: blue;
-    margin-bottom: 5px;
+    background: #337AB7;
+    border-bottom: 1px solid rgba(255,255,255,.1);
 }
 
 nav.sidebar-left ul li:hover {
-    background: blueviolet;
+    background: #EA6A2A;
 }
 
 nav.sidebar-left ul li.active {
-    background: red;
+    background: #EA6A2A;
 }
 
 nav.sidebar-left ul li a {
     display: block;
-    padding: 5px 10px;
+    padding: 20px 30px;
     color: white;
     text-decoration: none;
 }
@@ -53,4 +56,43 @@ nav.sidebar-left ul li a {
 
 .status.status-0 {
     background: indianred;
+}
+
+.btn-add {
+    color: white;
+    font-size: 35px;
+    line-height: 35px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.btn-add:hover, .btn-add:focus {
+    color: white;
+}
+
+.btn-add::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #337AB7;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    transition: .3s all;
+}
+
+.btn-add:hover::before {
+    background: #EA6A2A;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
 }

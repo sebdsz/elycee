@@ -13,7 +13,7 @@
         </div>
 
         <div class="pull-right">
-            <a href="{{ action('StudentController@create') }}" class="btn btn-primary">Ajouter</a>
+            <a href="{{ action('StudentController@create') }}" class="btn btn-add">+</a>
         </div>
 
         <form action="{{ action('StudentController@action') }}" method="post">

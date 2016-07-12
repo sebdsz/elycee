@@ -3,10 +3,10 @@
 @section('content')
     <div class="row">
         <section class="col-xs-12 col-md-6">
-            <h2>Gestion des fiches</h2>
-            <h3>Dernières fiches</h3>
+            <h2>Gestion des questions</h2>
+            <h3>Dernières questions</h3>
             @forelse($questions as $question)
-                <p><a href="{{ action('RecordController@edit', $question) }}">{{ $question->title }}</a></p>
+                <p><a href="{{ action('RecordController@edit', $question) }}">{{ $question->content }}</a></p>
             @empty
                 Aucune question dans la base de données.
             @endforelse
@@ -41,7 +41,7 @@
             <h2>Gestion des élèves</h2>
             <h3>Derniers élèves</h3>
             @forelse($students as $student)
-                <a href="{{ action('StudentController@edit', $student) }}">{{ $student->username }}</a>
+                <p><a href="{{ action('StudentController@edit', $student) }}">{{ $student->username }}</a></p>
             @empty
                 Aucun élève dans la base de données.
             @endforelse

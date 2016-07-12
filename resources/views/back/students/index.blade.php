@@ -4,7 +4,8 @@
 
 
     <div>
-        <h2>Page admin élèves</h2>
+        <h2 style="margin:0 0 25px 0" class="pull-left">Tous les élèves (<span
+                    class="count">{{count($students)}}</span>)</h2>
         <div class="row">
             <div class="col-xs-12">
                 @if(Session::has('message'))

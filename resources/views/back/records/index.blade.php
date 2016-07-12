@@ -5,7 +5,8 @@
 
 
     <div>
-        <h2>Page admin fiches (questions)</h2>
+        <h2 style="margin:0 0 25px 0" class="pull-left">Toutes les questions (<span
+                    class="count">{{count($records)}}</span>)</h2>
         <div class="row">
             <div class="col-xs-12">
                 @if(Session::has('message'))

@@ -1,7 +1,24 @@
 html, body {
     font-family: 'Roboto', sans-serif;
-    height: 100%;
     background: #f9f9f9;
+}
+
+header {
+    background: #404040;
+    height: 60px;
+}
+
+
+header ul li#logo a {
+    font-family: 'Poiret One', cursive;
+    font-size: 30px;
+    font-weight: 400;
+    color: white;
+    line-height: 30px;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    background: #EA6A2A;
 }
 
 a {
@@ -31,7 +48,7 @@ a:hover, a:active, a:focus {
 nav.sidebar-left {
     position: fixed;
     left: 0;
-    top: 65px;
+    top: 60px;
     bottom: 0;
     background: #404040;
 }

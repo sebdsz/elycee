@@ -1,67 +1,39 @@
 @extends('layouts.front')
 
 @section('content')
-    <h2>Page d'accueil</h2>
-
     <div id="content">
-
-
-        <p>Vous avez recherché tous les articles contenant le mot clé suivant : {{ $keywords }}.</p>
-        <p>{{ $total }} {{ trans_choice('site.postsFind', $total) }} été trouvé.</p>
-        <div id="posts">
-            <h3>Articles</h3>
-            {{ $posts->links() }}
-            @foreach($posts as $post)
-                <div class="post">
-                    @if($post->url_thumbnail) <img src="{{ $post->url_thumbnail() }}" alt=""> @endif
-                    <h4>{{ $post->title }}</h4>
-                    <p class="content">{!! $post->excerpt() !!}</p>
-                    <a href="{{ action('FrontController@post', $post) }}">Lire la suite</a>
-                    <p>{{ $post->fullDate() }}</p>
-                    <p>{{ $post->user->username }}</p>
-                    <p>{{ $post->status }}</p>
-                    <p>{{ count($post->comments) }} {{ trans_choice('site.comments', count($post->comments)) }}</p>
-                    <div class="comments">
-                        @foreach($post->comments as $comment)
-                            <div class="comment">
-                                @can('delete', $comment)
-                                <form action="{{ action('CommentController@delete', $comment) }}" method="post">
-                                    {{ method_field('DELETE') }}
-                                    {{ csrf_field() }}
-
-                                    <button>Supprimer</button>
-                                </form>
-                                @endcan
-                                <p>{{ $comment->content }}</p>
-                                <p title="Le {{ utf8_encode($comment->date->formatLocalized('%A %d %B %Y &agrave; %H:%M:%S')) }}">
-                                    Par {{ $comment->user->username }}, il y a {{ $comment->ago() }}.</p>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>Vous avez recherché tous les articles contenant le mot clé suivant : {{ $keywords }}.</p>
+                <p>{{ $total }} {{ trans_choice('site.postsFind', $total) }} été trouvé.</p>
+            </div>
+        </div>
+        <div id="posts" class="row">
+            <div class="col-xs-12">
+                {{ $posts->links() }}
+                @foreach($posts as $index => $post)
+                    @if($index % 2 == 0)
+                        <div class="row">
+                            @endif
+                            <div class="post col-xs-12 col-md-6">
+                                @include('partials.post')
                             </div>
-                        @endforeach
-                        @can('comment', $post)
-                        <form action="{{ action('CommentController@store') }}" method="post">
-                            {{ csrf_field() }}
-                            <label for="content">Votre commentaire</label>
-                            <input type="hidden" value="{{ $post->id }}" name="post_id">
-                            <textarea name="content" id="content"></textarea>
-                            @if($errors->has('content')) <span
-                                    class="error">{{ $errors->first('content') }}</span> @endif
-                            <button>Commenter</button>
-                        </form>
-                        @endcan
-                    </div>
-                </div>
-            @endforeach
+                            @if($index % 2 == 1 || count($posts) < 2)
+                        </div>
+                    @endif
+                @endforeach
+            </div>
         </div>
     </div>
 @endsection
 @section('scripts')
     <style>
-        .mark, mark {
+        mark {
             background: yellow;
             padding: 5px 0;
         }
     </style>
     <script>
-        $('h4, p.content').mark("{{ $keywords }}");
+        $('div.content').mark("{{ $keywords }}");
     </script>
 @endsection

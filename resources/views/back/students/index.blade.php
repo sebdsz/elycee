@@ -2,8 +2,9 @@
 
 @section('content')
 
-    <h2>Page admin élèves</h2>
+
     <div>
+        <h2>Page admin élèves</h2>
         <div class="row">
             <div class="col-xs-12">
                 @if(Session::has('message'))
@@ -31,7 +32,7 @@
             </div>
 
 
-            <table class="table table-bordered">
+            <table class="table">
                 <tr>
                     <th><input class="all" type="checkbox" name="all" title="Cocher toutes les cases"></th>
                     <th>Identifiant</th>

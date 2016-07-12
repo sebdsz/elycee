@@ -1,6 +1,31 @@
 html, body {
     font-family: 'Roboto', sans-serif;
     height: 100%;
+    background: #f9f9f9;
+}
+
+a {
+    color: #404040;
+    text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+    color: #404040;
+    text-decoration: none;
+}
+
+.table > tbody > tr > th {
+    color: #c3c3c3;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.table > tbody > tr:hover {
+    background: rgba(64, 64, 64, 0.1);
+}
+
+.table > tbody > tr > td {
+    padding: 15px 8px;
 }
 
 nav.sidebar-left {
@@ -22,7 +47,8 @@ nav.sidebar-left ul li {
 }
 
 nav.sidebar-left ul li:hover {
-    background: #EA6A2A;
+    background: #3171ac;
+    border-bottom: 1px solid rgba(0,0,0,.1);
 }
 
 nav.sidebar-left ul li.active {
@@ -43,11 +69,13 @@ nav.sidebar-left ul li a {
 .status {
     width: 20px;
     height: 20px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
     display: block;
     margin: auto;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 .status.status-1 {
@@ -95,4 +123,9 @@ nav.sidebar-left ul li a {
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
+}
+
+.container > div {
+    background: white;
+    padding: 15px;
 }

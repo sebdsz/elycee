@@ -1,18 +1,17 @@
 @extends('layouts.back')
 
 @section('content')
-
-    <div class="row">
-        <div class="col-xs-12" style="margin-bottom: 25px">
-            <h2 style="margin:0 25px 0 0" class="pull-left">Tous les articles (<span class="count">{{count($posts)}}</span>)</h2>
-            <form class="pull-left" action="{{ action('PostController@feed') }}" method="post">
-                {{ csrf_field() }}
-                <button class="btn btn-warning">Importer des news via le flux rss le monde ?</button>
-            </form>
-        </div>
-    </div>
-
     <div>
+        <div class="row">
+            <div class="col-xs-12" style="margin-bottom: 25px">
+                <h2 style="margin:0 25px 0 0" class="pull-left">Tous les articles (<span
+                            class="count">{{count($posts)}}</span>)</h2>
+                <form class="pull-left" action="{{ action('PostController@feed') }}" method="post">
+                    {{ csrf_field() }}
+                    <button class="btn btn-warning">Importer des news via le flux rss le monde ?</button>
+                </form>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12">
                 @if(Session::has('message'))
@@ -44,7 +43,7 @@
             </div>
 
 
-            <table class="table table-bordered">
+            <table class="table">
                 <tr>
                     <th><input class="all" type="checkbox" name="all" title="Cocher toutes les cases"></th>
                     <th>Titre</th>

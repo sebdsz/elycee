@@ -48,6 +48,7 @@
                     <th><input class="all" type="checkbox" name="all" title="Cocher toutes les cases"></th>
                     <th>Titre</th>
                     <th>Auteur</th>
+                    <th>Publié le</th>
                     <th>Commentaires</th>
                     <th>Statut</th>
                 </tr>
@@ -58,6 +59,7 @@
                                    title="Cocher cette case pour séléctionner l'article correspondant"></td>
                         <td><a href="{{ action('PostController@edit', $post) }}">{{ $post->title }}</a></td>
                         <td>{{ $post->user->username }}</td>
+                        <td>{{ $post->date }}</td>
                         <td>{{ count($post->commentaires) }}</td>
                         <td>
                             <div class="status status-{{ $post->status }}"></div>

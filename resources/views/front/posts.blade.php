@@ -6,7 +6,11 @@
     <div id="content">
         <div id="posts">
             <div class="col-xs-12">
-                {{ $posts->links() }}
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ $posts->links() }}
+                    </div>
+                </div>
                 @foreach($posts as $index => $post)
                     @if($index % 2 == 0)
                         <div class="row">

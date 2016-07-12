@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use App\Paginator\EPresenter;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +28,8 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        Paginator::presenter(function ($paginator) {
+            return new EPresenter($paginator);
+        });
     }
 }

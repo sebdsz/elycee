@@ -8,15 +8,7 @@ a.btn {
     font-weight: 500;
 }
 
-h1 {
-
-}
-
-h2 {
-
-}
-
-h3 {
+h1, h2, h3, h4 {
     text-align: center;
 }
 
@@ -30,7 +22,6 @@ h3::after {
 }
 
 h4 {
-    text-align: center;
     font-weight: 500;
 }
 
@@ -263,19 +254,42 @@ p.count {
 .pagination > li.active > a:before, .pagination > li.active > span:before {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 2px solid #337AB7;
     z-index: -1;
     left: 0;
     top: 0;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
+    width: 100%;
+    height: 100%;
+    border: 2px solid #337AB7;
+    transition: .5s all;
+    animation: paginate .5s 1 forwards;
 }
 
 .pagination > li.disabled {
     opacity: 0.5;
+}
+
+@keyframes paginate {
+    from {
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    to {
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+}
+
+@-webkit-keyframes paginate {
+    from {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    to {
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
 }

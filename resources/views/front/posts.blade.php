@@ -18,7 +18,7 @@
                             <div class="post col-xs-12 col-md-6">
                                 @include('partials.post')
                             </div>
-                            @if($index % 2 == 1 || count($posts) < 2)
+                            @if($index % 2 == 1 || $index === count($posts)-1)
                         </div>
                     @endif
                 @endforeach

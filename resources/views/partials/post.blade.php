@@ -9,8 +9,7 @@
                 <p class="byUser">Par {{ $post->user->username }}, le {{ $post->fullDate() }}</p>
             </div>
         </div>
-        <p class="count"><span
-                    class="glyphicon glyphicon-comment"></span> {{ count($post->comments) }} {{ trans_choice('site.comments', count($post->comments)) }}
+        <p class="count"><span class="glyphicon glyphicon-comment"></span> {{ count($post->comments) }} {{ trans_choice('site.comments', count($post->comments)) }}
         </p>
     </div>
 </div>

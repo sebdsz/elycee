@@ -323,6 +323,14 @@ p.count {
     font-family: 'Poiret One', sans-serif;
 }
 
+.page-404 h2 span.blue {
+    color: #337AB7;
+}
+
+.page-404 h2 span.orange {
+    color: #EA6A2A;
+}
+
 .page-404 h4 {
     font-size: 30px;
     font-family: "Poiret One", sans-serif;

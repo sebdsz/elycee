@@ -112,7 +112,7 @@ return [
 
     'attributes'           => [
         'name'                  => 'Nom',
-        'username'              => 'Pseudo',
+        'username'              => 'Identifiant',
         'email'                 => 'Adresse e-mail',
         'first_name'            => 'Prénom',
         'last_name'             => 'Nom',

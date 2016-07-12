@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Login</div>
+                    <div class="panel-heading">Connexion</div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                             {{ csrf_field() }}
@@ -17,7 +17,7 @@
                                     <input id="username" type="text" class="form-control" name="username"
                                            value="{{ old('username') }}">
 
-                                    @if ($errors->has('email'))
+                                    @if ($errors->has('username'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('username') }}</strong>
                                     </span>
@@ -56,12 +56,12 @@
                                     </button>
 
                                     <a class="btn btn-link" href="{{ url('/password/reset') }}">Mot de passe oublié ?</a>
-                                    <a class="btn btn-link" href="{{ url('/') }}">Retour sur le site</a>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+                <a class="btn btn-primary" href="{{ url('/') }}">Retour sur le site</a>
             </div>
         </div>
     </div>

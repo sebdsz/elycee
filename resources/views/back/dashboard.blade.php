@@ -6,7 +6,7 @@
             <h2>Dernières questions</h2>
             @forelse($questions as $question)
                 <div class="last">
-                    <a href="{{ action('RecordController@edit', $question) }}">{{ $question->content }}</a>
+                    <a href="{{ action('RecordController@edit', $question) }}"> <span class="status status-{{ $question->status }} " style="float:left; margin-right:10px"></span> {{ $question->content }}</a>
                 </div>
             @empty
                 Aucune question dans la base de données.
@@ -27,7 +27,7 @@
                 <h2>Derniers articles</h2>
                 @forelse($posts as $post)
                     <div class="last">
-                        <a href="{{ action('PostController@edit', $post) }}">{{ $post->title }}</a> {{ $post->status }}
+                        <a href="{{ action('PostController@edit', $post) }}">{{ $post->title }} <span class="status status-{{ $post->status }} " style="float:left; margin-right:10px"></span></a>
                     </div>
                 @empty
                     Aucun article dans la base de données.

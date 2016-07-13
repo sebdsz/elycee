@@ -127,9 +127,9 @@ nav ul li form button {
 #sidebar > div {
     padding: 5px 20px;
     border: 1px solid rgba(51, 122, 183, .1);
-    -webkit-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
-    -moz-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
-    box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
 }
 
 #sidebar {
@@ -197,6 +197,7 @@ footer ul li a:hover {
 .post h4 a {
     color: #337AB7;
 }
+
 .post h4 a:hover, .post h4 a:active, .post h4 a:focus {
     color: #337AB7;
     text-decoration: none;
@@ -210,9 +211,9 @@ footer ul li a:hover {
     padding: 20px;
     border: 1px solid rgba(51, 122, 183, .1);
     border-top: 0;
-    -webkit-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
-    -moz-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
-    box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
 }
 
 .post img {
@@ -224,7 +225,6 @@ footer ul li a:hover {
     border-bottom: 0;
 
 }
-
 
 p.byUser {
     font-style: italic;
@@ -238,18 +238,23 @@ a.read {
     display: block;
     float: left;
     color: white;
-    background: #337AB7;
+    border: 1px solid #337AB7;
     padding: 6px 15px;
     font-weight: 500;
     font-style: italic;
     border-radius: 15px;
     margin-top: 9px;
     margin-bottom: 20px;
+    color: #337AB7;
+    -webkit-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    -moz-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    box-shadow:  1px 1px 5px rgba(0,0,0,.1);
 }
 
 a.read:hover {
     text-decoration: none;
-    background: #EA6A2A;
+    border: 1px solid #EA6A2A;
+    color: #EA6A2A;
 }
 
 .pagination {
@@ -291,7 +296,10 @@ a.read:hover {
     top: 0;
     width: 100%;
     height: 100%;
-    border: 2px solid #337AB7;
+    border: 1px solid #337AB7;
+    -webkit-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    -moz-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    box-shadow:  1px 1px 5px rgba(0,0,0,.1);
     transition: .5s all;
     animation: paginate .5s 1 forwards;
 }

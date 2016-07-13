@@ -213,9 +213,6 @@ footer ul li a:hover {
     border: 1px solid rgba(51, 122, 183, 1);
     border-bottom: 0;
 }
-#content .post p.count {
-    margin:15px 0 0 0;
-}
 
 p.byUser {
     font-style: italic;
@@ -235,6 +232,7 @@ a.read {
     font-style: italic;
     border-radius: 15px;
     margin-top: 9px;
+    margin-bottom: 20px;
 }
 
 a.read:hover {

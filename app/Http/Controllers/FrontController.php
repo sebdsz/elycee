@@ -50,10 +50,13 @@ class FrontController extends Controller
     {
 
         $data = $request->only('email', 'subject', 'comment');
+
         Mail::send('emails.contact', $data, function ($message) use ($data) {
+            $message->from('contact@sebdsz.fr', 'Contact Form');
             $message->subject($data['subject']);
             $message->to('sebdesquirez@gmail.com');
         });
+
 
         return back()->with('message', 'Votre email à été envoyé !');
     }

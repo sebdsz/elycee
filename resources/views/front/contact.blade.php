@@ -3,6 +3,14 @@
 @section('content')
     <h2>Page de contact du site</h2>
 
+    <div class="row">
+        <div class="col-xs-12">
+            @if(Session::has('message'))
+                @include('partials.back.message')
+            @endif
+        </div>
+    </div>
+
     <form action="" method="post">
         {{ csrf_field() }}
         <div class="form-group">

@@ -1,14 +1,14 @@
 @extends('layouts.back')
 
 @section('content')
-    <div>
+    <div class="bg">
         <div class="row">
             <div class="col-xs-12" style="margin-bottom: 25px">
-                <h2 style="margin:0 25px 0 0" class="pull-left">Tous les articles (<span
-                            class="count">{{count($posts)}}</span>)</h2>
-                <form class="pull-left" action="{{ action('PostController@feed') }}" method="post">
+                <h3 class="pull-left">Tous les articles (<span
+                            class="count">{{count($posts)}}</span>)</h3>
+                <form class="pull-right" action="{{ action('PostController@feed') }}" method="post">
                     {{ csrf_field() }}
-                    <button class="btn btn-warning">Importer des news via le flux rss le monde ?</button>
+                    <button class="btn btn-warning">Importer des actualités</button>
                 </form>
             </div>
         </div>
@@ -67,7 +67,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5">Aucun article dans la base de données.</td>
+                        <td colspan="6">Aucun article dans la base de données.</td>
                     </tr>
                 @endforelse
             </table>

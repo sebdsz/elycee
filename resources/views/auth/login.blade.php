@@ -61,7 +61,7 @@
                         </form>
                     </div>
                 </div>
-                <a class="btn btn-default" href="{{ url('/') }}">Retour sur le site</a>
+                <a class="btn btn-warning" href="{{ url('/') }}">Retour sur le site</a>
             </div>
         </div>
     </div>

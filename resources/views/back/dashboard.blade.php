@@ -1,15 +1,17 @@
 @extends('layouts.back')
 
 @section('content')
-    <div class="row">
+    <div class="row bg">
         <section class="col-xs-12 col-md-6">
-            <h2>Gestion des questions</h2>
-            <h3>Dernières questions</h3>
+            <h2>Dernières questions</h2>
             @forelse($questions as $question)
-                <p><a href="{{ action('RecordController@edit', $question) }}">{{ $question->content }}</a></p>
+                <div class="last">
+                    <a href="{{ action('RecordController@edit', $question) }}">{{ $question->content }}</a>
+                </div>
             @empty
                 Aucune question dans la base de données.
             @endforelse
+            <a class="btn btn-primary" href="{{ action('RecordController@index') }}">Voir toutes les questions</a>
         </section>
 
         <section class="col-xs-12 col-md-6">
@@ -19,32 +21,31 @@
             <p>{{ $countStudents }} {{ trans_choice('site.students', $countStudents) }}</p>
         </section>
     </div>
-    <div class="row">
+    <div class="row bg">
         <section class="col-xs-12 col-md-6">
-            <h2>Gestion des articles</h2>
             <div>
-                <h3>Derniers articles</h3>
-                <div class="last-posts">
-                    @forelse($posts as $post)
-                        <div class="last-post">
-                            <a href="{{ action('PostController@edit', $post) }}">{{ $post->title }}</a> {{ $post->status }}
-                        </div>
-                    @empty
-                        Aucun article dans la base de données.
-                    @endforelse
-                    <a href="{{ action('PostController@index') }}">Voir tous les articles</a>
-                </div>
+                <h2>Derniers articles</h2>
+                @forelse($posts as $post)
+                    <div class="last">
+                        <a href="{{ action('PostController@edit', $post) }}">{{ $post->title }}</a> {{ $post->status }}
+                    </div>
+                @empty
+                    Aucun article dans la base de données.
+                @endforelse
+                <a class="btn btn-primary" href="{{ action('PostController@index') }}">Voir tous les articles</a>
             </div>
         </section>
 
         <section class="col-xs-12 col-md-6">
-            <h2>Gestion des élèves</h2>
-            <h3>Derniers élèves</h3>
+            <h2>Derniers élèves</h2>
             @forelse($students as $student)
-                <p><a href="{{ action('StudentController@edit', $student) }}">{{ $student->username }}</a></p>
+                <div class="last">
+                    <a href="{{ action('StudentController@edit', $student) }}">{{ $student->username }}</a>
+                </div>
             @empty
                 Aucun élève dans la base de données.
             @endforelse
+            <a class="btn btn-primary" href="{{ action('StudentController@index') }}">Voir tous les élèves</a>
         </section>
     </div>
 @endsection

@@ -1,8 +1,8 @@
 @extends('layouts.back')
 
 @section('content')
-    <div>
-        <h2>{{ $student->username }}</h2>
+    <div class="bg">
+        <h3>{{ $student->username }}</h3>
         @if(!is_null($student->score()) )
             <p>Sa moyenne est de {{ $student->scoreAverage(20) }}/20
                 avec {{ $student->madeQCM() }} {{ trans_choice('site.qcm_finish', $student->madeQCM()) }}

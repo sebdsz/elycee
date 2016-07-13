@@ -3,11 +3,33 @@ html, body {
     background: #f9f9f9;
 }
 
+h2 {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #c3c3c3;
+    margin-bottom: 20px;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #c3c3c3;
+    margin-top: 10px;
+}
+
+h3 {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #c3c3c3;
+    margin: 0 0 15px 0;
+}
+
 header {
     background: #404040;
     height: 60px;
 }
-
 
 header ul li#logo a {
     font-family: 'Poiret One', cursive;
@@ -19,6 +41,14 @@ header ul li#logo a {
 
 .nav > li > a:focus, .nav > li > a:hover {
     background: #EA6A2A;
+}
+
+.navbar-text {
+    color: white;
+    font-weight: 700;
+}
+.navbar-text a {
+    margin-left: 30px;
 }
 
 a {
@@ -36,7 +66,9 @@ a:hover, a:active, a:focus {
     text-transform: uppercase;
     font-weight: 500;
 }
-
+.table > tbody > tr:first-of-type:hover {
+    background: none;
+}
 .table > tbody > tr:hover {
     background: rgba(64, 64, 64, 0.1);
 }
@@ -60,12 +92,12 @@ nav.sidebar-left ul {
 
 nav.sidebar-left ul li {
     background: #337AB7;
-    border-bottom: 1px solid rgba(255,255,255,.1);
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
 nav.sidebar-left ul li:hover {
     background: #3171ac;
-    border-bottom: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
 }
 
 nav.sidebar-left ul li.active {
@@ -143,11 +175,19 @@ nav.sidebar-left ul li a {
     -o-transform: rotate(45deg);
 }
 
-.container > div {
+.container .bg {
     background: white;
     padding: 15px;
     margin-bottom: 15px;
-    -webkit-box-shadow: 1px 1px 10px rgba(0,0,0,.1);
-    -moz-box-shadow: 1px 1px 10px rgba(0,0,0,.1);
-    box-shadow: 1px 1px 10px rgba(0,0,0,.1);
+    -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 1px 1px 10px rgba(0, 0, 0, .1);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .1);
+}
+
+.last {
+    margin-bottom: 5px;
+}
+
+.last:last-of-type {
+    margin-bottom: 25px;
 }

@@ -183,7 +183,6 @@ class PostController extends Controller
                 'content' => $item->description,
                 'date' => \Carbon\Carbon::parse($item->pubDate),
                 'url_thumbnail' => $url,
-                'status' => 1,
             ]);
         }
 

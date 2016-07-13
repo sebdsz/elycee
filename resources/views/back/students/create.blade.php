@@ -1,8 +1,8 @@
 @extends('layouts.back')
 
 @section('content')
-    <div>
-        <h2>Nouvel élève</h2>
+    <div class="bg">
+        <h3>Nouvel élève</h3>
         @if(Session::has('message'))
             @include('partials.back.message')
         @endif

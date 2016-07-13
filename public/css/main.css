@@ -353,3 +353,11 @@ a.read:hover {
     -moz-border-radius: 15px;
     border-radius: 15px;
 }
+
+.panel-default > .panel-heading {
+    background: #EA6A2A;
+    border: 1px solid #d66729;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+}

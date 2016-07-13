@@ -3,9 +3,9 @@
 @section('content')
 
 
-    <div>
-        <h2 style="margin:0 0 25px 0" class="pull-left">Tous les élèves (<span
-                    class="count">{{count($students)}}</span>)</h2>
+    <div class="bg">
+        <h3 class="pull-left">Tous les élèves (<span
+                    class="count">{{count($students)}}</span>)</h3>
         <div class="row">
             <div class="col-xs-12">
                 @if(Session::has('message'))
@@ -44,7 +44,8 @@
 
                 @forelse($students as $student)
                     <tr>
-                        <td><input class="checked" type="checkbox" name="checked[]" value="{{ $student->id }}" title="Cocher pour séléctionner l'élève correspondant"></td>
+                        <td><input class="checked" type="checkbox" name="checked[]" value="{{ $student->id }}"
+                                   title="Cocher pour séléctionner l'élève correspondant"></td>
                         <td><a href="{{ action('StudentController@edit', $student) }}">{{ $student->username }}</a></td>
                         <td>{{ $student->email }}</td>
                         <td>{{ $student->inClass() }}</td>

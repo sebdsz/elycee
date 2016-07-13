@@ -1,8 +1,8 @@
 @extends('layouts.back')
 
 @section('content')
-    <div>
-        <h2>{{ $record->title }}</h2>
+    <div class="bg">
+        <h3>{{ $record->content }}</h3>
         @if(Session::has('message'))
             @include('partials.back.message')
         @endif

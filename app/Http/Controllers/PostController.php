@@ -175,15 +175,17 @@ class PostController extends Controller
         $news = $news->channel->item;
 
         foreach ($news as $item) {
-            foreach ($item->enclosure as $attributes) $url = $attributes->url;
+            if (isset($item->enclosure)) {
+                foreach ($item->enclosure as $attributes) $url = $attributes->url;
 
-            Post::firstOrcreate([
-                'user_id' => Auth::user()->id,
-                'title' => $item->title,
-                'content' => $item->description,
-                'date' => \Carbon\Carbon::parse($item->pubDate),
-                'url_thumbnail' => $url,
-            ]);
+                Post::firstOrcreate([
+                    'user_id' => Auth::user()->id,
+                    'title' => $item->title,
+                    'content' => $item->description,
+                    'date' => \Carbon\Carbon::parse($item->pubDate),
+                    'url_thumbnail' => $url,
+                ]);
+            }
         }
 
         $newNews = Post::all()->count() - $lastsNews;

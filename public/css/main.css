@@ -392,7 +392,3 @@ input.form-control, textarea.form-control {
     box-shadow: none;
     resize: none;
 }
-
-label {
-    display: none;
-}

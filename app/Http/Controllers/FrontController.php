@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use File;
+use Mail;
 use App\Post;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -45,9 +46,16 @@ class FrontController extends Controller
         return view('front.contact');
     }
 
-    public function postContact()
+    public function postContact(Requests\ContactRequest $request)
     {
-        exit('ok');
+
+        $data = $request->only('email', 'subject', 'comment');
+        Mail::send('emails.contact', $data, function ($message) use ($data) {
+            $message->subject($data['subject']);
+            $message->to('sebdesquirez@gmail.com');
+        });
+
+        return back()->with('message', 'Votre email à été envoyé !');
     }
 
     public function search(Requests\SearchRequest $request)

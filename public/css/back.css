@@ -142,6 +142,18 @@ nav.sidebar-left ul li a {
     background: indianred;
 }
 
+.btn {
+    padding: 6px 15px;
+    border: none;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    -moz-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    font-variant: petite-caps;
+}
+
 .btn-add {
     color: white;
     font-size: 35px;
@@ -197,4 +209,8 @@ nav.sidebar-left ul li a {
 
 .last:last-of-type {
     margin-bottom: 25px;
+}
+
+.btn-warning {
+    background: #EA6A2A;
 }

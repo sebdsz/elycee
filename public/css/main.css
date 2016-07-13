@@ -234,10 +234,9 @@ p.byUser {
     margin: 15px 0 0 0;
 }
 
-a.read {
+a.read, button.send {
     display: block;
     float: left;
-    color: white;
     border: 1px solid #337AB7;
     padding: 6px 15px;
     font-weight: 500;
@@ -246,12 +245,13 @@ a.read {
     margin-top: 9px;
     margin-bottom: 20px;
     color: #337AB7;
+    background: none;
     -webkit-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
     -moz-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
     box-shadow:  1px 1px 5px rgba(0,0,0,.1);
 }
 
-a.read:hover {
+a.read:hover, button.send:hover {
     text-decoration: none;
     border: 1px solid #EA6A2A;
     color: #EA6A2A;
@@ -364,13 +364,6 @@ a.read:hover {
     margin-bottom: 50px;
 }
 
-.btn {
-    padding: 6px 15px;
-    border: none;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-}
 
 .panel-default > .panel-heading {
     background: #EA6A2A;
@@ -378,4 +371,28 @@ a.read:hover {
     color: white;
     text-align: center;
     font-weight: 700;
+}
+
+.btn {
+    padding: 6px 15px;
+    border: none;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    -moz-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    font-variant: petite-caps;
+}
+
+input.form-control, textarea.form-control {
+    border: 1px solid rgba(0,0,0,.1);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none;
+}
+
+label {
+    display: none;
 }

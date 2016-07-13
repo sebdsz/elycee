@@ -126,7 +126,10 @@ nav ul li form button {
 
 #sidebar > div {
     padding: 5px 20px;
-    border: 1px solid #337AB7;
+    border: 1px solid rgba(51, 122, 183, .1);
+    -webkit-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    -moz-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    box-shadow:  1px 1px 5px rgba(0,0,0,.1);
 }
 
 #sidebar {
@@ -205,8 +208,11 @@ footer ul li a:hover {
 
 .post > div .content {
     padding: 20px;
-    border: 1px solid rgba(51, 122, 183, 1);
+    border: 1px solid rgba(51, 122, 183, .1);
     border-top: 0;
+    -webkit-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    -moz-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    box-shadow:  1px 1px 5px rgba(0,0,0,.1);
 }
 
 .post img {
@@ -214,8 +220,9 @@ footer ul li a:hover {
     margin: 0 auto;
     width: 100%;
     height: auto;
-    border: 1px solid rgba(51, 122, 183, 1);
+    border: 1px solid rgba(51, 122, 183, 0.1);
     border-bottom: 0;
+
 }
 
 

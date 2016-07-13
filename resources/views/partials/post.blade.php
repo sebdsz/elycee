@@ -1,7 +1,7 @@
 <div>
-    @if($post->url_thumbnail) <img src="{{ $post->url_thumbnail() }}" alt="" class="img-responsive"> @endif
+    @if($post->url_thumbnail) <a href="{{ action('FrontController@post', $post) }}"><img src="{{ $post->url_thumbnail() }}" alt="" class="img-responsive"></a> @endif
     <div class="content">
-        <h4>{{ $post->title }}</h4>
+        <h4><a href="{{ action('FrontController@post', $post) }}">{{ $post->title }}</a></h4>
         <p>{!! $post->excerpt() !!}</p>
         <div class="row">
             <div class="col-xs-12">

@@ -191,8 +191,12 @@ footer ul li a:hover {
     margin-bottom: 15px;
 }
 
-.post h4 {
+.post h4 a {
     color: #337AB7;
+}
+.post h4 a:hover, .post h4 a:active, .post h4 a:focus {
+    color: #337AB7;
+    text-decoration: none;
 }
 
 .post > div {
@@ -213,6 +217,7 @@ footer ul li a:hover {
     border: 1px solid rgba(51, 122, 183, 1);
     border-bottom: 0;
 }
+
 
 p.byUser {
     font-style: italic;

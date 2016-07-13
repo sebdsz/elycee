@@ -29,7 +29,7 @@
                 </select>
                 @if($errors->has('role')) <span class="error">{{ $errors->first('role') }}</span> @endif
             </div>
-            <button class="btn btn-success">Modifier</button>
+            <button class="btn btn-success">Ajouter</button>
         </form>
     </div>
 @endsection

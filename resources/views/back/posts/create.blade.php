@@ -34,7 +34,7 @@
                 <input type="date" class="form-control" name="date" placeholder="dd/mm/YYYY" value="{{ old('date') }}">
                 @if($errors->has('date')) <span class="error">{{ $errors->first('date') }}</span> @endif
             </div>
-            <button>Ajouter</button>
+            <button class="btn btn-success">Ajouter</button>
         </form>
     </div>
 @endsection

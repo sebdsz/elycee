@@ -12,7 +12,7 @@
             {{ csrf_field() }}
 
             <div class="form-group">
-                <label for="thumbnail">Thumbnail</label>
+                <label for="thumbnail">Image</label>
                 <input type="file" name="url_thumbnail">
             </div>
 

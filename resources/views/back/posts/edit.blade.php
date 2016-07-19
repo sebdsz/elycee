@@ -14,9 +14,9 @@
 
             <div class="form-group">
                 @if($post->url_thumbnail)
-                    <img src="{{ $post->url_thumbnail() }}" class="img-responsive">
+                    <img src="{{ $post->url_thumbnail() }}" class="img-responsive thumbnail">
                 @endif
-                <label for="thumbnail">Thumbnail</label>
+                <label for="thumbnail">Image</label>
                 <input type="file" name="url_thumbnail">
 
             </div>

@@ -178,13 +178,15 @@ class PostController extends Controller
             if (isset($item->enclosure)) {
                 foreach ($item->enclosure as $attributes) $url = $attributes->url;
 
-                Post::firstOrcreate([
+                $post = Post::firstOrcreate([
                     'user_id' => Auth::user()->id,
                     'title' => $item->title,
-                    'content' => $item->description,
-                    'date' => \Carbon\Carbon::parse($item->pubDate),
-                    'url_thumbnail' => $url,
                 ]);
+
+                $post->content = $item->description;
+                $post->date = \Carbon\Carbon::parse($item->pubDate);
+                $post->url_thumbnail = $url;
+                $post->touch();
             }
         }
 

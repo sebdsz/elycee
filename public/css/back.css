@@ -24,6 +24,7 @@ h3 {
     text-transform: uppercase;
     color: #c3c3c3;
     margin: 0 0 15px 0;
+    text-align: center;
 }
 
 header {
@@ -148,9 +149,9 @@ nav.sidebar-left ul li a {
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
-    -webkit-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
-    -moz-box-shadow:  1px 1px 5px rgba(0,0,0,.1);
-    box-shadow:  1px 1px 5px rgba(0,0,0,.1);
+    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
     font-variant: petite-caps;
 }
 
@@ -213,4 +214,9 @@ nav.sidebar-left ul li a {
 
 .btn-warning {
     background: #EA6A2A;
+}
+
+img.thumbnail {
+    display: block;
+    margin: 20px auto;
 }

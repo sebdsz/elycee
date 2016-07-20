@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\OrderBy;
 use App\User;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -13,9 +14,20 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = User::student()->get();
+        $students = User::student();
+
+        $table = $request->get('o');
+        $order = $request->get('b');
+
+        if ($table && $order)
+            if ($order === 'desc')
+                $students = $students->orderBy($table, 'desc');
+            else
+                $students = $students->orderBy($table, 'asc');
+
+        $students = $students->get();
 
         return view('back.students.index', compact('students'));
     }

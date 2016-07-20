@@ -202,6 +202,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'XmlToJson' => App\Helpers\XmlToJson::class,
+        'OrderBy' => App\Helpers\OrderBy::class,
 
     ],
 

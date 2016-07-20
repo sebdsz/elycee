@@ -34,6 +34,9 @@ class ChoiceController extends Controller
     public function update(Requests\ChoiceRequest $request)
     {
         if ($request->get('id')) {
+            if ($request->get('content')[0] == '' || $request->get('content')[1] == '')
+                return back()->with('message', 'Erreur, les 2 premiers choix sont obligatoires.');
+
             foreach ($request->get('id') as $key => $id) {
                 $choice = Choice::findOrFail($request->get('id')[$key]);
                 $choice->content = $request->get('content')[$key];

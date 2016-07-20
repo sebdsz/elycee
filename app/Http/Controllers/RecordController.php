@@ -47,7 +47,7 @@ class RecordController extends Controller
             ]);
         }
 
-        return redirect()->action('ChoiceController@edit', $record)->with('message', 'Question créee avec succès !');
+        return redirect()->action('ChoiceController@edit', $record)->with('message', 'Question créée avec succès !');
     }
 
     /**

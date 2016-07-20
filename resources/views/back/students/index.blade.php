@@ -36,9 +36,9 @@
             <table class="table">
                 <tr>
                     <th><input class="all" type="checkbox" name="all" title="Cocher toutes les cases"></th>
-                    <th>Identifiant</th>
-                    <th>Adresse email</th>
-                    <th>Classe</th>
+                    <th>{!! OrderBy::render('StudentController@index', 'username', 'Identifiant') !!}</th>
+                    <th>{!! OrderBy::render('StudentController@index', 'email', 'Adresse email') !!}</th>
+                    <th>{!! OrderBy::render('StudentController@index', 'role', 'Classe') !!}</th>
                     <th>Score</th>
                 </tr>
 

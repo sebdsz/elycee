@@ -155,6 +155,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Msurguy\Honeypot\HoneypotServiceProvider::class,
 
     ],
 
@@ -203,6 +204,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'XmlToJson' => App\Helpers\XmlToJson::class,
         'OrderBy' => App\Helpers\OrderBy::class,
+        'Honeypot' => Msurguy\Honeypot\HoneypotFacade::class,
 
     ],
 

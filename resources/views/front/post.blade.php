@@ -42,6 +42,7 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="content">Votre commentaire</label>
+                                {!! Honeypot::generate('my_name', 'my_time') !!}
                                 <input type="hidden" value="{{ $post->id }}" name="post_id">
                                 <textarea name="content" id="content" class="form-control"></textarea>
                                 @if($errors->has('content'))

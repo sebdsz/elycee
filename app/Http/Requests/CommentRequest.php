@@ -25,6 +25,8 @@ class CommentRequest extends Request
     {
         return [
             'content' => 'required|string',
+            'my_name' => 'honeypot',
+            'my_time' => 'required|honeytime:25',
         ];
     }
 }

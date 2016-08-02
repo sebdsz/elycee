@@ -98,6 +98,7 @@ class PostController extends Controller
      */
     public function destroy($post)
     {
+
         if ($post) {
             $dirUpload = public_path(env('UPLOAD_PICTURES', 'uploads'));
             if (is_dir($dirUpload . DIRECTORY_SEPARATOR . $post->id)) {

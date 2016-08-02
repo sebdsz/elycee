@@ -65,6 +65,7 @@ nav ul li {
 
 nav ul li form {
     margin-top: 14px;
+    max-width: 300px;
 }
 
 nav ul li#logo a {

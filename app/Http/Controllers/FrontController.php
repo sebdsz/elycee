@@ -13,6 +13,7 @@ class FrontController extends Controller
 {
     public function index()
     {
+
         $post = Post::with('comments', 'user')->publish()->last(1)->first();
         $posts = Post::with('comments', 'user')->publish()->skip(1)->take(10)->get();
 

@@ -11,9 +11,10 @@ class ScoresTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 2; $i <= 32; $i++) {
+
+        foreach(\App\User::where('role', '!=', 'teacher')->get() as $user) {
             App\Score::create([
-                'user_id' => $i,
+                'user_id' => $user->id,
                 'question_id' => 1,
                 'note' => rand(0, 3),
             ]);

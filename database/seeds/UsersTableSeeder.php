@@ -10,21 +10,106 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        App\User::create([
-            'username' => 'Niir',
-            'email' => 'sebdesquirez@gmail.com',
-            'role' => 'teacher',
-            'password' => \Illuminate\Support\Facades\Hash::make('passpass'),
-        ]);
 
-        App\User::create([
-            'username' => 'Gomar',
-            'email' => 'margaux.bossu@gmail.com',
-            'role' => 'first_class',
-            'password' => \Illuminate\Support\Facades\Hash::make('passpass'),
-        ]);
+        $json = '{
+            "users": {
+            "teacher": [
+            {
+                "username": "Alexandre"
+            }
+        ],
+        "first_class":
+                [
+                    {
+                        "username": "Abel"
+                    },
+                    {
+                        "username": "Al"
+                    },
+                    {
+                        "username": "Alan"
+                    },
+                    {
+                        "username": "Arthur"
+                    },
+                    {
+                        "username": "Carl"
+                    },
+                    {
+                        "username": "Blaise"
+                    },
+                    {
+                        "username": "Isaac"
+                    },
+                    {
+                        "username": "Steve"
+                    }
+                ],
+        "final_class": [
+            {
+                "username": "Alfred"
+            },
+            {
+                "username": "Brendan"
+            },
+            {
+                "username": "David"
+            },
+            {
+                "username": "George"
+            },
+            {
+                "username": "Jim"
+            },
+            {
+                "username": "Leslie"
+            },
+            {
+                "username": "Maria"
+            },
+            {
+                "username": "Rasmus"
+            },
+            {
+                "username": "Tim"
+            }
+        ]
 
+    }
+}';
 
-        factory(App\User::class, 30)->create();
+        $users = json_decode($json, true);
+
+        foreach ($users as $roles) {
+            foreach ($roles as $role => $users) {
+                foreach ($users as $user) {
+
+                    switch ($role) {
+                        case 'teacher' :
+                            App\User::create([
+                                'username' => $user['username'],
+                                'role' => 'teacher',
+                                'password' => \Illuminate\Support\Facades\Hash::make('passpass'),
+                            ]);
+                            break;
+                        case 'first_class' :
+                            App\User::create([
+                                'username' => $user['username'],
+                                'role' => 'first_class',
+                                'password' => \Illuminate\Support\Facades\Hash::make('passpass'),
+                            ]);
+                            break;
+                        case 'final_class' :
+                            App\User::create([
+                                'username' => $user['username'],
+                                'role' => 'final_class',
+                                'password' => \Illuminate\Support\Facades\Hash::make('passpass'),
+                            ]);
+                            break;
+                    }
+
+                }
+            }
+        }
     }
 }

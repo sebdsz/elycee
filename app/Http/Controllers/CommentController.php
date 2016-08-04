@@ -22,7 +22,7 @@ class CommentController extends Controller
         return back()->with('message', 'Votre commentaire a été ajouté.');
     }
 
-    public function update(Requests\CommentRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $comment = Comment::findOrFail($id);
 

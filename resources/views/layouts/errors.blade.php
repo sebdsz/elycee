@@ -12,9 +12,9 @@
 <body>
 
 @include('partials.nav')
-<div class="container" style="height:100%">
-    <div class="row" style="height:90%">
-        <div class="col-xs-12" style="height:100%">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
             @yield('content')
         </div>
     </div>

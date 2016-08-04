@@ -1,5 +1,5 @@
 <div>
-    <h3>A lire aussi</h3>
+    <h3>À lire aussi</h3>
     <ul class="list-posts">
         @foreach($posts as $post)
             <li>

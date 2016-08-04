@@ -26,7 +26,15 @@ class CommentRequest extends Request
         return [
             'content' => 'required|string',
             'my_name' => 'honeypot',
-            'my_time' => 'required|honeytime:25',
+            'my_time' => 'required|honeytime:8',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'content.required' => 'Veuillez écrire un commentaire...',
+            'my_time.honeytime' => 'Attendez avant d\'écrire ! Anti Spam (8 secondes)',
         ];
     }
 }

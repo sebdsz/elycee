@@ -1,22 +1,6 @@
 @extends('layouts.back')
 
 @section('content')
-
-    <form action="{{ action('PostController@update', $post) }}" method="post" enctype="multipart/form-data">
-        {{ method_field('PUT') }}
-        {{ csrf_field() }}
-
-        <label for="title">Titre</label>
-        <input type="text" name="title" id="title" value="{{ $post->title }}">
-
-        <label for="content">Contenu</label>
-        <textarea name="content" id="content">{{ $post->content }}</textarea>
-
-        <button>Modifier</button>
-    </form>
-@endsection
-
-@section('content')
     <div class="bg">
         <h3>{{ $post->title }}</h3>
 

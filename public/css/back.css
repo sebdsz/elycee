@@ -1,5 +1,22 @@
+@font-face {
+    font-family: 'gilroylight';
+    src: url('../fonts/gilroy-light-webfont.woff2') format('woff2'),
+    url('../fonts/gilroy-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'gilroyextrabold';
+    src: url('../fonts/gilroy-extrabold-webfont.woff2') format('woff2'),
+    url('../fonts/gilroy-extrabold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 html, body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'gilroylight';
     background: #f9f9f9;
 }
 
@@ -28,12 +45,15 @@ h3 {
 }
 
 header {
-    background: #404040;
+    background: #204056;
     height: 60px;
 }
 
 header ul li#logo {
     width: 145px;
+}
+header ul li#logo a:hover {
+    background:none;
 }
 
 header ul li#logo a {
@@ -46,7 +66,7 @@ header ul li#logo a {
 }
 
 .nav > li > a:focus, .nav > li > a:hover {
-    background: #EA6A2A;
+    background: #34b3a0;
 }
 
 .navbar-text {
@@ -56,6 +76,9 @@ header ul li#logo a {
 
 .navbar-text a {
     margin-left: 30px;
+    color: #fff;
+    border:1px solid #fff;
+    background-color: #204056;
 }
 
 a {
@@ -91,7 +114,7 @@ nav.sidebar-left {
     left: 0;
     top: 60px;
     bottom: 0;
-    background: #404040;
+    background: #204056;
 }
 
 nav.sidebar-left ul {
@@ -100,17 +123,17 @@ nav.sidebar-left ul {
 }
 
 nav.sidebar-left ul li {
-    background: #337AB7;
+    background: #446780;
     border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
 nav.sidebar-left ul li:hover {
-    background: #3171ac;
+    background: #34b3a0;
     border-bottom: 1px solid rgba(0, 0, 0, .1);
 }
 
 nav.sidebar-left ul li.active {
-    background: #EA6A2A;
+    background: #34b3a0;
 }
 
 nav.sidebar-left ul li a {
@@ -122,6 +145,18 @@ nav.sidebar-left ul li a {
 
 .container {
     margin-top: 80px;
+}
+
+.container .btn-primary{
+    color: #204056;
+    border:1px solid #204056;
+    background-color: #fff;
+}
+
+.container .btn-primary:hover{
+    color: #fff;
+    border:1px solid #204056;
+    background-color: #204056;
 }
 
 .status {
@@ -146,12 +181,9 @@ nav.sidebar-left ul li a {
 .btn {
     padding: 6px 15px;
     border: none;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
-    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
-    -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
     font-variant: petite-caps;
 }
 

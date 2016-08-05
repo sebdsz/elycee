@@ -13,12 +13,6 @@ use Illuminate\Http\Request;
 class BackController extends Controller
 {
 
-    public function __construct()
-    {
-        if (Auth::check() && !Auth::user()->isTeacher())
-            return redirect('QCMController@dashboard');
-    }
-
     public function index()
     {
         $posts = Post::last()->get();

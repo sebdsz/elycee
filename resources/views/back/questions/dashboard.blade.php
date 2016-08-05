@@ -2,7 +2,7 @@
 @section('title', 'E-lycée - Dashboard étudiant')
 @section('content')
     <div class="bg">
-        <h3>Dashboard</h3>
+        <h3>QCM</h3>
 
         @if(Auth::user()->newQCM())
             <p><span class="glyphiconglyphicon-fire"></span> Vous avez {{ $user->newQCM() }} {{ trans_choice('site.newQCM', $user->newQCM()) }} à valider.</p>
@@ -11,11 +11,10 @@
         @endif
 
         <h3>Statistiques</h3>
-        @if(!is_null($user->score()) )
+        @if($user->score() != 0)
             <div class="score">
                 <div>
-                    <span class="glyphicon glyphicon-certificate"></span> {{ $user->score() }}
-                    /{{ $user->scoreMax() }} {{ trans_choice('site.points', $user->scoreMax()) }}
+                    <span class="glyphicon glyphicon-certificate"></span> Vous avez {{ $user->score() }}/{{ $user->scoreMax() }} {{ trans_choice('site.points', $user->scoreMax()) }}
                     soit {{ $user->scoreAverage(20) }}/20 de moyenne.
                 </div>
                 <div>

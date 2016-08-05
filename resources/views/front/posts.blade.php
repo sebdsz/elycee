@@ -1,7 +1,7 @@
 @extends('layouts.front')
 
 @section('content')
-    <h2>Toutes les actualités</h2>
+    <h2 class="textCenter">Toutes les actualités</h2>
 
     <div id="content">
         <div id="posts">

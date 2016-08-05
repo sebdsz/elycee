@@ -32,7 +32,7 @@
                                 @endcan
                                 <p class="info-comment"
                                    title="Le {{ utf8_encode($comment->date->formatLocalized('%A %d %B %Y &agrave; %H:%M:%S')) }}">
-                                    Par {{ $comment->user->username }}, il y a {{ $comment->ago() }}.</p>
+                                    <span class="commUser">{{ $comment->user->username }}</span>, il y a {{ $comment->ago() }}.</p>
                                 <p class="comment">{{ $comment->content }}</p>
                             </div>
                         @endforeach

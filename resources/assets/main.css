@@ -16,7 +16,7 @@
 }
 html, body {
     background: #f9f9f9;
-    color:#3e3e40;
+    color:#204056;
     font-family: 'gilroylight';
     height: 100%;
 
@@ -37,6 +37,8 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
     font-family: 'gilroyextrabold';
 
 }
+h2.textCenter {
+    text-align: center;}
 h3::after {
     content: '';
     width: 100%;
@@ -69,7 +71,15 @@ h3::after {
 #menu-haut .pull-left {
     margin-top: 5px;
 }
-#menu-haut .pull-right ul li {
+#menu-haut .twitter,
+#menu-haut .fb-like {
+    margin-left: 5px;
+    float: left;
+}
+#menu-haut .connexion {
+    float: right;
+}
+#menu-haut .connexion ul li {
     margin-right: 10px;
 }
 nav {
@@ -112,15 +122,22 @@ nav#menu-principal {
     border:0 none;
 }
 nav#menu-principal li#logo {
-    background: url("../images/logo_elycee.png") no-repeat;
-    width: 143px;
-    height: 50px;
+    font-family: "gilroylight";
+    float: left;
 }
 nav#menu-principal li#logo a {
-    text-indent: -999999px ;
+    color: #204056;
+    font-size: 25px;
+    padding: 15px;
+}
+nav#menu-principal li#logo a span.eLogo {
+    font-family: 'gilroyextrabold';
+    font-size: 40px;
+
 }
 nav#menu-principal li#logo a:hover{
-    background:0 none;
+    background:white;
+    padding: 15px;
 }
 nav#menu-principal ul.pull-right li {
     margin-right: 15px;
@@ -128,9 +145,14 @@ nav#menu-principal ul.pull-right li {
 
 nav#menu-principal ul li a{
     color: #34b3a0;
+    padding: 10px !important;
+}
+nav#menu-principal ul li a:hover {
+    padding: 10px !important;
 }
 nav#menu-principal ul li.active a{
     color: #34b3a0;
+    padding: 10px !important;
 }
 nav#menu-principal ul li a:hover,
 nav#menu-principal.navbar-default .navbar-nav > .active > a,
@@ -138,6 +160,7 @@ nav#menu-principal.navbar-default .navbar-nav > .active > a:focus,
 nav#menu-principal.navbar-default .navbar-nav > .active > a:hover {
     background-color: #204056;
     color: #fff;
+    padding: 10px !important;
 }
 
 nav#menu-principal .navbar-toggle {
@@ -165,20 +188,20 @@ input.form-control {
 .input-group-addon button {
     background: none;
     border: none;
-    height:50px;
-    width:50px;
+    height:54px;
+    width:54px;
 }
 #menu-principal .input-group input.form-control {
     display: none;
     border-radius: 0;
-    height: 50px;
+    height: 54px;
     border-color: #204056;
     color: #204056;
 }
 #menu-principal .input-group input.form-control.active {
     border-radius: 0;
     display: block;
-    height: 50px;
+    height: 54px;
     border-color: #204056;
     color: #204056;
 }
@@ -249,14 +272,6 @@ footer ul li {
     display: inline-flex;
     margin-right: 10px;
 }
-footer ul li#logo {
-    background: url("../images/logo_elycee.png") no-repeat;
-    width: 143px;
-    height: 50px;
-}
-footer ul li#logo a {
-    text-indent: -999999px ;
-}
 footer ul li a {
     display: block;
     padding: 5px 10px;
@@ -308,8 +323,7 @@ footer ul li a:hover {
     border-bottom: 0;
 
 }
-
-p.byUser {
+.post p.byUser {
     font-style: italic;
     color: #5B9286;
     font-weight: 300;
@@ -337,6 +351,37 @@ p.comment[contenteditable=true] {
     border: 1px solid #fff;
     background-color: #204056;
 }
+.comments .commUser {
+    font-weight:bold;
+}
+.comments > form {
+    margin-top: 50px;
+}
+.edit-comment,
+.delete-comment button {
+    border:0;
+    background-color: #fff;
+}
+.edit-comment:hover {
+    color: #34b3a0;
+}
+.delete-comment button:hover {
+    color: #f65a5b;
+}
+.jconfirm-box .btn-default {
+    border:1px solid #204056;
+    border-radius:0;
+    color: #204056;
+
+}
+
+.jconfirm-box .btn-default:hover {
+    border:1px solid #204056;
+    background-color: #204056;
+    border-radius:0;
+    color: #fff;
+
+}
 a.read, button.send {
     display: block;
     float: left;
@@ -360,10 +405,10 @@ button.send {
     float: right;
 }
 
-a.read:hover, button.send:hover {
+.content a.read:hover, button.send:hover {
     text-decoration: none;
     color: #fff;
-    background: #46c9b6;
+    background: #5b9286;
 }
 
 .pagination {
@@ -578,7 +623,7 @@ input.form-control, textarea.form-control {
     color: #f65a5b;
 }
 .error {
-    color: red;
+    color: #f65a5b;
     font-weight:bold;
     font-style: italic;
     display: block;
@@ -587,4 +632,46 @@ input.form-control, textarea.form-control {
 
 span.bold {
     font-weight: bold;
+}
+.jconfirm.jconfirm-white .jconfirm-box .jconfirm-box{
+    border-radius:0;
+}
+.jconfirm.jconfirm-white .jconfirm-box .btn-default{
+    border:1px solid #204056;
+    color: #204056;
+}
+.jconfirm.jconfirm-white .jconfirm-box .btn-default:hover{
+    border:1px solid #446780;
+    color: #fff;
+    background-color: #446780;
+}
+@media screen and (min-width:620px) and (max-width:767px){
+    nav#menu-principal ul li a:hover{
+        padding-bottom:0 !important;
+    }
+}
+
+@media screen and (max-width:480px) {
+    #menu-haut {
+        padding: 2px;
+    }
+    #menu-haut .twitter,
+    #menu-haut .fb-like {
+        display: none;
+    }
+    #menu-haut .connexion {
+        float: none;
+        display: table;
+        margin: 0 auto 10px;
+    }
+    nav#menu-principal li#logo {
+        margin-left: 20px;
+    }
+    #menu-principal form {
+        float: none !important;
+    }
+
+    .navbar-nav {
+        margin: 7.5px 0;
+    }
 }

@@ -1,11 +1,11 @@
 <div id="menu-haut">
-    <div class="pull-left">
+    <div class="twitter">
         <a href="https://twitter.com/ecolemultimedia" class="twitter-follow-button" data-show-count="false"
            data-size="small" data-dnt="true">Follow @ecolemultimedia</a>
     </div>
-    <div class="fb-like pull-left" data-href="https://www.facebook.com/lecolemultimedia" data-layout="button_count"
+    <div class="fb-like" data-href="https://www.facebook.com/lecolemultimedia" data-layout="button_count"
          data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>
-    <div class="pull-right">
+    <div class="connexion">
 
     <ul class="nav navbar-nav">
         <li>
@@ -34,7 +34,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <ul class="nav navbar-nav"><li id="logo"><a href="{{ action('FrontController@index') }}">E-Lycée</a></li></ul>
+            <ul class="nav navbar-nav">
+                <li id="logo"><a href="{{ action('FrontController@index') }}"><span class="eLogo">E</span>.Lycée</a></li>
+            </ul>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">

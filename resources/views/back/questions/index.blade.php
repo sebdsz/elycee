@@ -26,8 +26,7 @@
                             <td><div class="status status-1"></div></td>
                             <td>{{ $question->content }}</td>
                             @endcan
-                            <td>{{ Auth::user()->scoreByQuestion($question) }}
-                                /{{ Auth::user()->maxScoreByQuestion($question) }}</td>
+                            <td>{{ Auth::user()->scoreByQuestion($question) }}/{{ Auth::user()->maxScoreByQuestion($question) }}</td>
                     </tr>
                 @empty
                     <tr>

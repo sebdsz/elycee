@@ -6,7 +6,7 @@
     <title>@yield('title', 'E-lycée')</title>
     <link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url('css/jquery-confirm.min.css') }}">
-    <link rel="stylesheet" href="{{ url('css/main.css') }}">
+    <link rel="stylesheet" href="{{ url('css/main.min.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,100italic,400italic,700,900,500' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -27,6 +27,7 @@
 <div id="fb-root"></div>
 <script src="{{ url('js/jquery1.min.js') }}"></script>
 <script src="{{ url('js/jquery-confirm.min.js') }}"></script>
+<script src="{{ url('js/bootstrap.min.js') }}"></script>
 <script src="{{ url('js/main.js') }}"></script>
 @yield('scripts')
 </body>

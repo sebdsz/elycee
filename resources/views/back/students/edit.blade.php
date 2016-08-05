@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="bg">
-        <h3>{{ $student->username }}</h3>
+        <h3 class="nomEleve">{{ $student->username }}</h3>
         @if(!is_null($student->score()) )
-            <p>Sa moyenne est de {{ $student->scoreAverage(20) }}/20
+            <p class="moyenneEleve">Sa moyenne est de {{ $student->scoreAverage(20) }}/20
                 avec {{ $student->madeQCM() }} {{ trans_choice('site.qcm_finish', $student->madeQCM()) }}
                 . {{ $student->isNumber() }}</p>
         @endif

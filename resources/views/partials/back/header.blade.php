@@ -1,7 +1,7 @@
 <header class="navbar navbar-fixed-top">
     <ul class="nav navbar-nav pull-left">
         <li id="logo">
-            <a href="{{ action('FrontController@index') }}" title="Retour au site public">E-Lycée</a>
+            <a href="{{ action('FrontController@index') }}" title="Retour au site public"><span class="eLogo">E</span>.Lycée</a>
         </li>
     </ul>
     <ul class="nav navbar-nav pull-right">

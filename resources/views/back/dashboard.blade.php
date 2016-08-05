@@ -7,8 +7,8 @@
             <div class="row">
                 @forelse($questions as $question)
                     <div class="last col-xs-12">
-                        <span class="status status-{{ $question->status }}" style="float:left; margin-right:10px"></span>
                         <a href="{{ action('RecordController@edit', $question) }}">{{ $question->content }}</a>
+                        <span class="status status-{{ $question->status }}" style="float:right; margin-right:10px"></span>
                     </div>
                 @empty
                     Aucune question dans la base de données.
@@ -31,8 +31,8 @@
                 <div class="row">
                     @forelse($posts as $post)
                         <div class="last col-xs-12">
-                            <span class="status status-{{ $post->status }}" style="float:left; margin-right:10px"></span>
                             <a href="{{ action('PostController@edit', $post) }}">{{ $post->title }}</a>
+                            <span class="status status-{{ $post->status }}" style="float:right; margin-right:10px"></span>
                         </div>
                     @empty
                         Aucun article dans la base de données.
